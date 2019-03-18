@@ -15,13 +15,11 @@ function db-login() {
 
   if [[ "${DB_PORT}" = "null" ]]
   then
-        echo defaulting port
         DB_PORT=5432
   fi
 
   if [[ "${DB_NAME}" = "null" ]]
   then
-        echo defaulting name
         DB_NAME=$(echo ${service} | tr - _)
   fi
 
