@@ -32,11 +32,8 @@
         #
         # Setting to git 2.0 default to suppress warning message
         default = simple
-[github]
-	user = chrispruitt
+
 [jira]
-	url = https://premise.atlassian.net
+        url = https://g2lytics.atlassian.net
 [init]
-	templateDir = /Users/chris.pruitt/.git_templates
-[user]
-	name = chris-pruitt
+        templateDir = /Users/chris.pruitt/.git_templates

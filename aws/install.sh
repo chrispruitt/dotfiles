@@ -8,6 +8,13 @@ chmod +x /usr/local/bin/get-ssm-params
 # ecs-deploy - https://github.com/justmiles/ecs-deploy
 # TODO
 
+mkdir ecs_justmiles
+curl -f -LO https://github.com/justmiles/ecs-cli/releases/download/v0.0.11/ecs_0.0.11_Darwin_x86_64.tar.gz | tar xvzf -C ecs_justmiles
+mv ecs_justmiles/ecs /usr/local/bin/
+chmod +x /usr/local/bin/ecs
+rm -r ecs_justmiles
+
+
 curl -f -L https://github.com/chrispruitt/go-get-ecs-services/releases/download/v1.3.0/get-ecs-services.v1.3.0.darwin-amd64 -o /usr/local/bin/get-ecs-services
 chmod +x /usr/local/bin/get-ecs-services
 #############################################################################################################################################################
