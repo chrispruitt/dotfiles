@@ -1,14 +1,45 @@
+function get-lambda-versions() {
+  local FILTER_ENV=^${1}-
+  local results=$(aws lambda list-functions | jq '.Functions | sort_by(.FunctionName)')
+
+  echo ${1}
+  for row in $(echo "${results}" | jq -r --arg FILTER_ENV "$FILTER_ENV" '.[] | {FunctionName} | select(.FunctionName | match($FILTER_ENV;"i")) | @base64'); do
+
+    local func_name=$(echo ${row} | base64 --decode | jq -r '.FunctionName')
+
+
+    IFS='-' read -r env name <<< "$func_name"
+    local version=$(get-ssm-params -path /${env}/lambda/${name} | jq -r '.VERSION')
+
+    echo ${name} - ${version}
+  done
+}
+
 function aws-ssh() {
   local IP=$1
   local REGION=$(aws configure get region)
   local PROVISIONER=$(if [[ "${REGION}" == "us-gov-west-1" ]]; then echo "groot_provisioner.pem"; else echo "root_provisioner.pem"; fi)
 
+  echo "ssh ec2-user@${IP} -i ~/.ssh/${PROVISIONER}"
   ssh ec2-user@${IP} -i ~/.ssh/${PROVISIONER}
 }
 
+#function aws-get-security-groups() {
+#  local FILTER_NAME=$1
+#
+#  local result=$(aws ec2 describe-security-groups | jq -r '.SecurityGroups[] | {GroupId} + {GroupName} + {Description}')
+#
+#  if [[ ! -z "$FILTER_NAME" ]]
+#  then
+#    result=$(echo ${result} | jq -r --arg FILTER_NAME "$FILTER_NAME" 'select(.GroupName | match($FILTER_NAME;"i"))')
+#  fi
+#
+#  echo ${result} | jq
+#}
+
 function aws-ssh-generate-configs() {
   # Doesn't work for gov cloud.......................
-  # Will need to right my own maybe..................if i care that much. lets see how much i use it
+  # Will need to write my own maybe..................if i care that much. lets see how much i use it
   local REGION=$(aws configure get region)
   python3 ~/random-tools/aws-ssh-config/aws-ssh-config.py --white-list-region ${REGION} --private --prefix ${AWS_PROFILE}- > ~/.ssh/config
 }
