@@ -46,26 +46,26 @@ need_push () {
   fi
 }
 
-ruby_version() {
-  if (( $+commands[rbenv] ))
-  then
-    echo "$(rbenv version | awk '{print $1}')"
-  fi
-
-  if (( $+commands[rvm-prompt] ))
-  then
-    echo "$(rvm-prompt | awk '{print $1}')"
-  fi
-}
-
-rb_prompt() {
-  if ! [[ -z "$(ruby_version)" ]]
-  then
-    echo "%{$fg_bold[yellow]%}$(ruby_version)%{$reset_color%}"
-  else
-    echo ""
-  fi
-}
+#ruby_version() {
+#  if (( $+commands[rbenv] ))
+#  then
+#    echo "$(rbenv version | awk '{print $1}')"
+#  fi
+#
+#  if (( $+commands[rvm-prompt] ))
+#  then
+#    echo "$(rvm-prompt | awk '{print $1}')"
+#  fi
+#}
+#
+#rb_prompt() {
+#  if ! [[ -z "$(ruby_version)" ]]
+#  then
+#    echo "%{$fg_bold[yellow]%}$(ruby_version)%{$reset_color%}"
+#  else
+#    echo ""
+#  fi
+#}
 
 package_version() {
   if [[ -f ./package.json ]]
@@ -101,7 +101,7 @@ is_python_virtual() {
 python_env() {
   if ! [[ -z $(python3 -V) ]]
   then
-    echo "%{$fg_bold[green]%}python3/%{$reset_color%}%{$fg_bold[yellow]%}$(python3 -V)/%{$reset_color%}$(is_python_virtual) "
+    echo "%{$fg_bold[green]%}py/%{$reset_color%}%{$fg_bold[yellow]%}$(python -V)/%{$reset_color%}$(is_python_virtual) "
   else
     echo "missing python"
   fi

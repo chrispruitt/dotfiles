@@ -44,7 +44,7 @@ function aws-ssh-generate-configs() {
   python3 ~/random-tools/aws-ssh-config/aws-ssh-config.py --white-list-region ${REGION} --private --prefix ${AWS_PROFILE}- > ~/.ssh/config
 }
 
-function aws-describe-instance-by-service() {
+function aws-describe-instances-by-service() {
   local CLUSTER=$1
   local TASK_NAME=$2
 
@@ -54,7 +54,6 @@ function aws-describe-instance-by-service() {
   if [[ -z "$TASK_ARN" ]] || [[ "$TASK_ARN" = 'null' ]]
   then
     echo "No running task found for ${TASK_NAME} in ${CLUSTER}"
-    return
   fi
 
   local NUMBER_OF_TASKS=$(echo ${TASK_LIST} | jq length)
@@ -127,4 +126,30 @@ function aws-describe-instances() {
   fi
 
   echo ${result} | jq
+}
+
+
+
+function aws-describe-tasks-by-service() {
+  local CLUSTER=$1
+  local TASK_NAME=$2
+
+  local TASK_LIST=$(aws ecs list-tasks --cluster ${CLUSTER} --desired-status RUNNING --service-name ${TASK_NAME} | jq -r '.taskArns[]')
+
+  if [[ -z "TASK_LIST" ]] || [[ "TASK_LIST" = 'null' ]]
+  then
+    echo "No running task found for ${TASK_NAME} in ${CLUSTER}"
+  fi
+
+
+  aws ecs describe-tasks --tasks ${TASK_LIST} --cluster ${CLUSTER} | jq -r '.tasks[] | {taskArn} + {taskDefinitionArn}'
+}
+
+function aws-deactivate-mfa-device() {
+  local USERNAME=$1
+  echo $USERNAME
+
+  local SERIAL_NUMBER=$(aws iam list-mfa-devices --user-name "${USERNAME}" | jq -r '.MFADevices[0].SerialNumber')
+
+  aws iam deactivate-mfa-device --user-name ${USERNAME} --serial-number ${SERIAL_NUMBER}
 }

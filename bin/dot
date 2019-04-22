@@ -20,6 +20,10 @@ brew update  && brew upgrade --all && brew cleanup && brew doctor
 echo "› $ZSH/script/install"
 $ZSH/script/install
 
+## Install python
+#echo "› $ZSH/python/install.sh"
+#$ZSH/python/install.sh 2>&1
+
 # Install AWS Tools
 echo "› $ZSH/aws/install.sh"
 $ZSH/aws/install.sh 2>&1
