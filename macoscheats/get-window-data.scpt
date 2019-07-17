@@ -55,21 +55,21 @@ if (button returned of dialogResult is "Save") then
             set appSize to {0}
             set appPosition to {0}
           end if
-          set appSettings to {}
+--          set appSettings to {}
+--
+--          repeat with i from 1 to (count of apps of currentSettings)
+--            if name of item i of apps of currentSettings is procName then
+--             set appSettings to item i of apps of currentSettings
+--            end if
+--          end repeat
 
-          repeat with i from 1 to (count of apps of currentSettings)
-            if name of item i of apps of currentSettings is procName then
-             set appSettings to item i of apps of currentSettings
-            end if
-          end repeat
-
-          if (count of appSettings) is 0 then
-            set appSettings to {name:procName, pos:appPosition, size:appSize}
-            set end of apps of currentSettings to appSettings
-          else
-            set pos of appSettings to appPosition
-            set size of appSettings to appSize
-          end if
+--          if (count of appSettings) is 0 then
+--            set appSettings to {name:procName, pos:appPosition, size:appSize}
+--            set end of apps of currentSettings to appSettings
+--          else
+--            set pos of appSettings to appPosition
+--            set size of appSettings to appSize
+--          end if
         end tell
       end repeat
     end tell

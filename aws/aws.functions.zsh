@@ -146,10 +146,17 @@ function aws-describe-tasks-by-service() {
 }
 
 function aws-deactivate-mfa-device() {
-  local USERNAME=$1
-  echo $USERNAME
+  local user=$1
+  echo $user
 
-  local SERIAL_NUMBER=$(aws iam list-mfa-devices --user-name "${USERNAME}" | jq -r '.MFADevices[0].SerialNumber')
+  local SERIAL_NUMBER=$(aws iam list-mfa-devices --user-name "${user}" | jq -r '.MFADevices[0].SerialNumber')
 
-  aws iam deactivate-mfa-device --user-name ${USERNAME} --serial-number ${SERIAL_NUMBER}
+  aws iam deactivate-mfa-device --user-name ${user} --serial-number ${SERIAL_NUMBER}
+}
+
+function aws-bounce-service() {
+  local S_ENV=$1
+  local SERVICE=$2
+
+  aws ecs stop-task --cluster ${S_ENV} --task $(aws ecs list-tasks --cluster ${S_ENV} --service ${SERVICE} | jq -r .taskArns[0])
 }
