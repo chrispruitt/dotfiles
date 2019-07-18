@@ -160,3 +160,26 @@ function aws-bounce-service() {
 
   aws ecs stop-task --cluster ${S_ENV} --task $(aws ecs list-tasks --cluster ${S_ENV} --service ${SERVICE} | jq -r .taskArns[0])
 }
+
+function aws-describe-security-group() {
+  local FILTER_NAME=$1
+  local SECURITY_GROUP_IDs=$(aws ec2 describe-security-groups | jq -r --arg FILTER_NAME "$FILTER_NAME" '.SecurityGroups[] | select(.GroupName | match($FILTER_NAME;"i")) | .GroupId')
+  echo ${SECURITY_GROUP_IDs}
+}
+
+function aws-whitelist-ip() {
+  local FILTER_SECURITY_GROUP_NAME=$1
+
+  local SECURITY_GROUP_ID=$(aws-describe-security-group ${FILTER_SECURITY_GROUP_NAME})
+  local LOCAL_IP=$(curl v4.ifconfig.co)
+  echo $(aws ec2 authorize-security-group-ingress --group-id ${SECURITY_GROUP_ID} --protocol tcp --port 22 --cidr ${LOCAL_IP}/32)
+}
+
+function aws-whitelist-ip-revoke() {
+  local FILTER_SECURITY_GROUP_NAME=$1
+
+  local SECURITY_GROUP_ID=$(aws-describe-security-group ${FILTER_SECURITY_GROUP_NAME})
+  local LOCAL_IP=$(curl v4.ifconfig.co)
+  echo $(aws ec2 revoke-security-group-ingress --group-id ${SECURITY_GROUP_ID} --protocol tcp --port 22 --cidr ${LOCAL_IP}/32)
+}
+
