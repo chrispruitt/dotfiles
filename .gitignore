@@ -9,6 +9,8 @@ atom.symlink/packages
 atom.symlink/recovery
 atom.symlink/storage
 atom.symlink/themes
+atom.symlink/.atom-socket-secret-chris-1.40.1
+atom.symlink/github.cson
 config.symlink/wireshark
 configstore
 dump.rdb
@@ -21,4 +23,10 @@ irssi.symlink/sasl.auth
 irssi.symlink/saved_colors
 rethinkdb_data
 vim.symlink/plugged
+vim.symlink/README.md
+vim.symlink/base16*
+
+
 .idea
+
+DNS/g2l-office.txt
