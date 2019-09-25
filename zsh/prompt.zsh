@@ -99,7 +99,7 @@ is_python_virtual() {
 }
 
 python_env() {
-  if ! [[ -z $(python3 -V) ]]
+  if ! [[ -z $(python -V) ]]
   then
     echo "%{$fg_bold[green]%}py/%{$reset_color%}%{$fg_bold[yellow]%}$(python -V)/%{$reset_color%}$(is_python_virtual) "
   else
@@ -114,7 +114,7 @@ aws_workspace() {
   fi
 }
 
-export PROMPT=$'\n$(directory_name) $(python_env)$(package_version) $(aws_workspace) $(git_dirty)$(need_push)\n› '
+export PROMPT=$'\n$(directory_name) $(aws_workspace) $(git_dirty)$(need_push)\n› '
 #export PROMPT=$'\n$(node_version)$(rb_prompt)$(directory_name)$(package_version) $(git_dirty)$(need_push)\n› '
 
 set_prompt () {

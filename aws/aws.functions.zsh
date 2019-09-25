@@ -24,18 +24,15 @@ function aws-ssh() {
   ssh ec2-user@${IP} -i ~/.ssh/${PROVISIONER}
 }
 
-#function aws-get-security-groups() {
-#  local FILTER_NAME=$1
-#
-#  local result=$(aws ec2 describe-security-groups | jq -r '.SecurityGroups[] | {GroupId} + {GroupName} + {Description}')
-#
-#  if [[ ! -z "$FILTER_NAME" ]]
-#  then
-#    result=$(echo ${result} | jq -r --arg FILTER_NAME "$FILTER_NAME" 'select(.GroupName | match($FILTER_NAME;"i"))')
-#  fi
-#
-#  echo ${result} | jq
-#}
+function aws-ssh-send() {
+  local IP=$1
+  local COMMANDS=$2
+  local REGION=$(aws configure get region)
+  local PROVISIONER=$(if [[ "${REGION}" == "us-gov-west-1" ]]; then echo "groot_provisioner.pem"; else echo "root_provisioner.pem"; fi)
+
+  echo "ssh ec2-user@${IP} -i ~/.ssh/${PROVISIONER} '${2}'"
+  ssh ec2-user@${IP} -i ~/.ssh/${PROVISIONER} '${2}'
+}
 
 function aws-ssh-generate-configs() {
   # Doesn't work for gov cloud.......................
@@ -177,7 +174,7 @@ function aws-whitelist-ip() {
   local FILTER_SECURITY_GROUP_NAME=$1
 
   local SECURITY_GROUP_ID=$(aws-get-security-group-id ${FILTER_SECURITY_GROUP_NAME})
-  local LOCAL_IP=$(curl v4.ifconfig.co)
+  local LOCAL_IP=$(curl -s v4.ifconfig.co)
   echo $(aws ec2 authorize-security-group-ingress --group-id ${SECURITY_GROUP_ID} --protocol tcp --port 22 --cidr ${LOCAL_IP}/32)
 }
 
@@ -185,7 +182,18 @@ function aws-whitelist-ip-revoke() {
   local FILTER_SECURITY_GROUP_NAME=$1
 
   local SECURITY_GROUP_ID=$(aws-get-security-group-id ${FILTER_SECURITY_GROUP_NAME})
-  local LOCAL_IP=$(curl v4.ifconfig.co)
+  local LOCAL_IP=$(curl -s v4.ifconfig.co)
   echo $(aws ec2 revoke-security-group-ingress --group-id ${SECURITY_GROUP_ID} --protocol tcp --port 22 --cidr ${LOCAL_IP}/32)
 }
 
+#function aws-deactivate-mfa-openvpn() {
+#  local USERNAME=$1
+#  echo "Whitelisting IP for OpenVpn Server"
+#  echo $(aws-whitelist-ip vpn)
+#aw
+#  local IP=$(aws-describe-instances ops vpn | jq -r '.PublicIpAddress')
+#  echo $(aws-ssh-send ${IP} "sudo su root; sh /usr/local/openvpn_as/scripts/sacli --user ${USERNAME} GoogleAuthRegen")
+#
+#  echo "Revoking whitelisted IP for OpenVpn Server"
+#  echo $(aws-whitelist-ip-revoke vpn)
+#}
