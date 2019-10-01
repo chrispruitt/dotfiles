@@ -1,3 +1,10 @@
+function aws-describe-g2-autoscaling() {
+  echo "PubCloud"
+  aws autoscaling describe-auto-scaling-groups --profile g2lytics-pub | jq -r '(["AutoScalingGroupName","MinSize", " MaxSize", "DesiredCapacity"] | (., map(length*"-"))), (.AutoScalingGroups[] | [.AutoScalingGroupName, .MinSize, .MaxSize, .DesiredCapacity]) | @tsv' | column -t
+  echo "\nGovCloud"
+  aws autoscaling describe-auto-scaling-groups --profile g2lytics-gov | jq -r '(["AutoScalingGroupName","MinSize", " MaxSize", "DesiredCapacity"] | (., map(length*"-"))), (.AutoScalingGroups[] | [.AutoScalingGroupName, .MinSize, .MaxSize, .DesiredCapacity]) | @tsv' | column -t
+}
+
 function get-lambda-versions() {
   local FILTER_ENV=^${1}-
   local results=$(aws lambda list-functions | jq '.Functions | sort_by(.FunctionName)')
