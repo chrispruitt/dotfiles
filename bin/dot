@@ -14,15 +14,15 @@ $ZSH/homebrew/install.sh 2>&1
 
 # Upgrade homebrew
 echo "› brew update"
-brew update  && brew upgrade --all && brew cleanup && brew doctor
+brew update  && brew upgrade && brew cleanup && brew doctor
 
 # Install software
 echo "› $ZSH/script/install"
 $ZSH/script/install
 
 ## Install python
-#echo "› $ZSH/python/install.sh"
-#$ZSH/python/install.sh 2>&1
+echo "› $ZSH/python/install.sh"
+$ZSH/python/install.sh 2>&1
 
 # Install AWS Tools
 echo "› $ZSH/aws/install.sh"

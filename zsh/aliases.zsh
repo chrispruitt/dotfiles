@@ -31,10 +31,18 @@ alias ssm-pub='cd ~/tools/ssm-parameter-store-pub; awsworkspace g2lytics-pub'
 alias ssm-gov-open='ssm-gov; atom .'
 alias ssm-pub-open='ssm-pub; atom .'
 
-# workspace
+# navigation shortcuts
 alias ws='cd $HOME/workspace'
 alias makesrc='mkdir -p ~/code/apis ~/code/data ~/code/oss ~/code/services ~/code/syncs ~/code/tmp ~/code/tools'
 alias wsp='cd $HOME/workspace/projects'
+alias kbn='cd /keybase/private/notes'
+alias kb='cd /keybase'
+
+# markdown notes
+alias notes='open -a typora /keybase/private/chrispruitt/notes/'
+
+# typora
+alias typora="open -a typora"
 
 # MacVim
 alias vim='mvim -v'
@@ -71,5 +79,11 @@ alias .h='vim /etc/hosts'
 # Homebrew
 alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
 
-#bitbucket shortcuts
+# bitbucket shortcuts
 alias pull-requests='python -mwebbrowser https://bitbucket.org/dashboard/pullrequests?section=teams'
+
+# just relax with a joke
+alias joke='curl -H "Accept: text/plain" https://icanhazdadjoke.com/ && echo '
+
+# weather
+alias weather='curl wttr.in'

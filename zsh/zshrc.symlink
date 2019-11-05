@@ -13,6 +13,9 @@ export PROJECTS=~/code
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 
+# postgres9.5
+export PATH=$PATH:/usr/local/opt/postgresql@9.5/bin
+
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
 # you'll have access to them in your scripts.
