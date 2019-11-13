@@ -1,6 +1,9 @@
 # Reload it all
 alias reload!='. ~/.zshrc'
 
+# Open dotfiles in VS Code
+alias dotfiles='code ~/.dotfiles/'
+
 alias name='scutil --get ComputerName' # get computer name
 
 # Mysql

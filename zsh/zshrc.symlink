@@ -1,3 +1,14 @@
+# Add to PATH if not exists function
+function pathmunge () {
+        if ! echo "$PATH" | grep -Eq "(^|:)$1($|:)" ; then
+           if [ "$2" = "before" ] ; then
+              PATH="$1:$PATH"
+           else
+              PATH="$PATH:$1"
+           fi
+        fi
+}
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
@@ -11,10 +22,10 @@ export PROJECTS=~/code
 
 #GO
 export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
+pathmunge $GOPATH/bin
 
 # postgres9.5
-export PATH=$PATH:/usr/local/opt/postgresql@9.5/bin
+pathmunge /usr/local/opt/postgresql@9.5/bin
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
