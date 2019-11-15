@@ -53,16 +53,6 @@ then
   npm install lab -g
 fi
 
-if test ! $(which instant-markdown-d)
-then
-  npm install instant-markdown-d -g
-fi
-
-if test ! $(which redis-commander)
-then
-  npm install redis-commander -g
-fi
-
 if test ! $(which gulp)
 then
   npm install gulp -g
@@ -73,22 +63,7 @@ then
   npm install nsp -g
 fi
 
-if test ! $(which coffee-script)
-then
-  npm install coffee-script -g
-fi
-
-if test ! $(which node-inspector)
-then
-  npm install node-inspector -g
-fi
-
 if test ! $(which npm-check)
 then
   npm install npm-check -g
-fi
-
-if test $(which reql-cli)
-then
-  npm update reql-cli -g
 fi
