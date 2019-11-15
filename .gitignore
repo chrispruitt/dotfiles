@@ -12,6 +12,7 @@ atom.symlink/themes
 atom.symlink/.atom-socket-secret-chris-1.40.1
 atom.symlink/github.cson
 config.symlink/wireshark
+config.symlink/gopass/
 configstore
 dump.rdb
 git/gitconfig.local.symlink
@@ -25,7 +26,6 @@ rethinkdb_data
 vim.symlink/plugged
 vim.symlink/README.md
 vim.symlink/base16*
-
 
 .idea
 
