@@ -3,7 +3,7 @@
 property allSettings: {}
 
 -- create a variable for the current settings
-set currentSettings to {w:3840, h:1980, apps:{{name:"JavaApplicationStub", pos:{1962, 93}}, {name:"Evernote", pos:{-1754, 112}, size:{1460, 895}}, {name:"Notes", pos:{-1890, 24}, size:{1241, 754}}, {name:"Finder", pos:{-1919, 23}, size:{600, 600}}, {name:"iTerm2", pos:{-1140, 206}, size:{1040, 673}}, {name:"Slack", pos:{-1244, 1103}, size:{1152, 846}}, {name:"Atom", pos:{-1799, 90}, size:{1657, 954}}, {name:"Messages", pos:{-1292, 1271}, size:{1011, 663}}, {name:"Google Chrome", pos:{2129, 20}, size:{1552, 915}}, {name:"Postman", pos:{-1702, 36}, size:{1552, 915}}, {name:"idea", pos:{0, 23}, size:{1920, 1057}}, {name:"Keybase", pos:{-1371, 1135}, size:{1039, 783}}, {name:"Typora", pos:{-1653, 159}, size:{1310, 877}} }}
+set currentSettings to {w:3840, h:1980, apps:{{name:"JavaApplicationStub", pos:{1962, 93}}, {name:"Evernote", pos:{-1754, 112}, size:{1460, 895}}, {name:"Notes", pos:{-1890, 24}, size:{1241, 754}}, {name:"Finder", pos:{-1919, 23}, size:{600, 600}}, {name:"iTerm2", pos:{-1140, 206}, size:{1040, 673}}, {name:"Slack", pos:{-1244, 1103}, size:{1152, 846}}, {name:"Atom", pos:{-1799, 90}, size:{1657, 954}}, {name:"Messages", pos:{-1292, 1271}, size:{1011, 663}}, {name:"Google Chrome", pos:{2129, 20}, size:{1552, 915}}, {name:"Postman", pos:{-1702, 36}, size:{1552, 915}}, {name:"idea", pos:{0, 23}, size:{1920, 1057}}, {name:"Keybase", pos:{-1371, 1135}, size:{1039, 783}}, {name:"Typora", pos:{-1653, 159}, size:{1310, 877}}, {name:"Electron", pos:{107, 36}, size:{1693, 1008}} }}
 
 --display dialog "Restore or save window settings?" buttons {"Restore", "Save"} default button "Restore"
 --set dialogResult to result

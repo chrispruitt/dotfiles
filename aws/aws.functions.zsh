@@ -1,3 +1,9 @@
+function aws-update-function-code() {
+  export LAMBDA_NAME=$1
+  export ARTIFACT_FILE_PATH="fileb://${pwd}${2}"
+  aws lambda update-function-code --function-name ${LAMBDA_NAME} --zip-file ${ARTIFACT_FILE_PATH}
+}
+
 function aws-describe-g2-autoscaling() {
   echo "PubCloud"
   aws autoscaling describe-auto-scaling-groups --profile g2lytics-pub | jq -r '(["AutoScalingGroupName","MinSize", " MaxSize", "DesiredCapacity"] | (., map(length*"-"))), (.AutoScalingGroups[] | [.AutoScalingGroupName, .MinSize, .MaxSize, .DesiredCapacity]) | @tsv' | column -t

@@ -1,3 +1,6 @@
+# export env secrets
+source $HOME/.envs
+
 # Add to PATH if not exists function
 function pathmunge () {
         if ! echo "$PATH" | grep -Eq "(^|:)$1($|:)" ; then
@@ -9,8 +12,14 @@ function pathmunge () {
         fi
 }
 
+# History Search
+hs() { fc -lim "*$@*" 1 }
+
 # GPG to work with keybase keys for gopass
 export GPG_TTY=$(tty)
+
+# Chromium dev tools
+pathmunge "$HOME/workspace/pruitt/depot_tools"
 
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
@@ -23,7 +32,7 @@ export AIRFLOW_HOME=/Users/chris/airflow
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/code
 
-#GO
+# GO
 export GOPATH=~/go
 pathmunge $GOPATH/bin
 
@@ -97,3 +106,10 @@ function uploadkeys {
 BASE16_SHELL="$HOME/.config/base16-shell/"
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/chris/workspace/tutorials/angularSeo/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/chris/workspace/tutorials/angularSeo/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/chris/workspace/tutorials/angularSeo/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/chris/workspace/tutorials/angularSeo/node_modules/tabtab/.completions/sls.zsh

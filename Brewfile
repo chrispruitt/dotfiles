@@ -4,6 +4,8 @@ tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'TylerBrock/saw'
 tap 'amar1729/formulae'
+tap 'dart-lang/dart'
+tap 'goreleaser/tap/goreleaser'
 
 brew 'ack'
 brew 'bash-completion'
@@ -29,6 +31,10 @@ brew 'bash'
 brew 'saw'
 brew 'go'
 brew 'python'
+brew 'dart'
+brew 'pandoc'
+brew 'goreleaser'
+brew 'asciinema'
 
 # Dependencies for gopass password manager on macos
 brew 'gnupg'
@@ -37,7 +43,6 @@ brew 'gopass'
 brew 'coreutils'
 brew 'gnu-sed'
 brew 'browserpass'
-
 
 cask 'atom'
 cask 'caffeine'

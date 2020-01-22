@@ -1,0 +1,1 @@
+pathmunge "$HOME/flutter/bin"

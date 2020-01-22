@@ -23,6 +23,8 @@ alias ...='cd ../..'
 alias ..='cd ..'
 alias .d='cd ~/.dotfiles'
 alias h='history'
+
+
 alias rf='rm -rf'
 
 # tools
@@ -36,9 +38,15 @@ alias ssm-pub-open='ssm-pub; atom .'
 
 # navigation shortcuts
 alias ws='cd $HOME/workspace'
+alias wg='cd $HOME/workspace/g2lytics'
+alias wgm='cd $HOME/workspace/g2lytics/misc'
+alias wgo='cd $HOME/go/src'
+alias wp='cd $HOME/workspace/pruitt'
+alias wt='cd $HOME/workspace/tutorials'
 alias makesrc='mkdir -p ~/code/apis ~/code/data ~/code/oss ~/code/services ~/code/syncs ~/code/tmp ~/code/tools'
 alias wsp='cd $HOME/workspace/projects'
-alias kbn='cd /keybase/private/notes'
+alias kbn='cd /keybase/private/chrispruitt/notes'
+alias kbn='cd /keybase/public/chrispruitt'
 alias kb='cd /keybase'
 
 # markdown notes
@@ -48,8 +56,8 @@ alias notes='open -a typora /keybase/private/chrispruitt/notes/'
 alias typora="open -a typora"
 
 # MacVim
-alias vim='mvim -v'
-alias v='mvim -v .'
+# alias vim='mvim -v'
+# alias v='mvim -v .'
 
 # PS
 alias psa="ps aux"
@@ -69,15 +77,16 @@ alias ls='ls -Gh'
 alias lsg='ll | grep'
 
 # editing
-alias ae='mvim -v ~/.dotfiles/zsh/aliases.zsh'
-alias de='mvim -v ~/.dotfiles'
-alias ge='mvim -v ~/.dotfiles/git/aliases.zsh'
-alias pe='mvim -v ~/.dotfiles/zsh/prompt.zsh'
-alias ve='mvim -v ~/.vimrc'
-alias ze='mvim -v ~/.zshrc'
-alias .v='vim ~/.vimrc'
-alias .z='vim ~/.zshrc'
-alias .h='vim /etc/hosts'
+alias ae='vi -v ~/.dotfiles/zsh/aliases.zsh'
+alias de='vi -v ~/.dotfiles'
+alias bf='vi -v ~/.dotfiles/Brewfile'
+alias ge='vi -v ~/.dotfiles/git/aliases.zsh'
+alias pe='vi -v ~/.dotfiles/zsh/prompt.zsh'
+alias ve='vi -v ~/.vimrc'
+alias ze='vi -v ~/.zshrc'
+alias .v='vi ~/.vimrc'
+alias .z='vi ~/.zshrc'
+alias .h='vi /etc/hosts'
 
 # Homebrew
 alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
