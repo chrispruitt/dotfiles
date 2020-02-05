@@ -19,4 +19,12 @@ chmod +x /usr/local/bin/get-ssm-params
 echo get-ecs-services
 curl -f -L https://github.com/chrispruitt/go-get-ecs-services/releases/download/v1.3.0/get-ecs-services.v1.3.0.darwin-amd64 -o /usr/local/bin/get-ecs-services
 chmod +x /usr/local/bin/get-ecs-services
+
+echo get-ecs-power
+curl -f -L https://github.com/chrispruitt/ecs-power/releases/download/v0.0.4/ecs-power_0.0.4_Darwin_x86_64.tar.gz | tar -xz -C /usr/local/bin/
+chmod +x /usr/local/bin/ecs-power
+
+echo git-bump
+curl -f -L https://github.com/b4b4r07/git-bump/releases/download/v0.1.0/git-bump_darwin_x86_64.tar.gz | tar -xz -C /usr/local/bin/
+chmod +x /usr/local/bin/git-bump
 #############################################################################################################################################################
