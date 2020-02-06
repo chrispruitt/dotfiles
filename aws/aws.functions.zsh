@@ -4,6 +4,14 @@ function aws-update-function-code() {
   aws lambda update-function-code --function-name ${LAMBDA_NAME} --zip-file ${ARTIFACT_FILE_PATH}
 }
 
+function aws-zip-current-directory-and-update-function() {
+  export LAMBDA_NAME=$1
+  export ARTIFACT_FILE_PATH="fileb:///tmp/artifact.zip"
+  zip -rFS /tmp/artifact.zip .
+  echo "Uploading current directory to lambda function \"zip -rFS /tmp/artifact.zip .\""
+  aws lambda update-function-code --function-name zip -rFS /tmp/artifact.zip . --zip-file ${ARTIFACT_FILE_PATH}
+}
+
 function aws-describe-g2-autoscaling() {
   echo "PubCloud"
   aws autoscaling describe-auto-scaling-groups --profile g2lytics-pub | jq -r '(["AutoScalingGroupName","MinSize", " MaxSize", "DesiredCapacity"] | (., map(length*"-"))), (.AutoScalingGroups[] | [.AutoScalingGroupName, .MinSize, .MaxSize, .DesiredCapacity]) | @tsv' | column -t

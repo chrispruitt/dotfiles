@@ -33,8 +33,8 @@ alias tool='cd ~/tools'
 # ssm
 alias ssm-gov='cd ~/tools/ssm-parameter-store-gov; awsworkspace g2lytics-gov'
 alias ssm-pub='cd ~/tools/ssm-parameter-store-pub; awsworkspace g2lytics-pub'
-alias ssm-gov-open='ssm-gov; atom .'
-alias ssm-pub-open='ssm-pub; atom .'
+alias ssm-gov-open='ssm-gov; code .'
+alias ssm-pub-open='ssm-pub; code .'
 
 # navigation shortcuts
 alias ws='cd $HOME/workspace'
