@@ -25,6 +25,6 @@ curl -f -L https://github.com/chrispruitt/ecs-power/releases/download/v0.0.4/ecs
 chmod +x /usr/local/bin/ecs-power
 
 echo git-bump
-curl -f -L https://github.com/b4b4r07/git-bump/releases/download/v0.1.0/git-bump_darwin_x86_64.tar.gz | tar -xz -C /usr/local/bin/
+curl -f -L https://github.com/b4b4r07/git-bump/releases/download/v0.1.1/git-bump_darwin_x86_64.tar.gz | tar -xz -C /usr/local/bin/
 chmod +x /usr/local/bin/git-bump
 #############################################################################################################################################################
