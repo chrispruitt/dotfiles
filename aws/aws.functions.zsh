@@ -8,8 +8,8 @@ function aws-zip-current-directory-and-update-function() {
   export LAMBDA_NAME=$1
   export ARTIFACT_FILE_PATH="fileb:///tmp/artifact.zip"
   zip -rFS /tmp/artifact.zip .
-  echo "Uploading current directory to lambda function \"zip -rFS /tmp/artifact.zip .\""
-  aws lambda update-function-code --function-name zip -rFS /tmp/artifact.zip . --zip-file ${ARTIFACT_FILE_PATH}
+  echo "Uploading current directory to lambda function."
+  aws lambda update-function-code --function-name $1 --zip-file ${ARTIFACT_FILE_PATH}
 }
 
 function aws-describe-g2-autoscaling() {
@@ -20,7 +20,7 @@ function aws-describe-g2-autoscaling() {
 }
 
 function get-lambda-versions() {
-  local FILTER_ENV=^${1}-
+  local FILTER_ENV=^${1:-dev}-
   local results=$(aws lambda list-functions | jq '.Functions | sort_by(.FunctionName)')
 
   echo ${1}

@@ -16,6 +16,10 @@ chmod +x /usr/local/bin/get-ssm-params
 #chmod +x /usr/local/bin/ecs
 #rm -r ecs_justmiles
 
+echo iam-policy-json-to-terraform
+curl -f -L https://github.com/flosell/iam-policy-json-to-terraform/releases/download/1.3.0/iam-policy-json-to-terraform_darwin -o /usr/local/bin/iam-policy-json-to-terraform
+chmod +x /usr/local/bin/iam-policy-json-to-terraform
+
 echo get-ecs-services
 curl -f -L https://github.com/chrispruitt/go-get-ecs-services/releases/download/v1.3.0/get-ecs-services.v1.3.0.darwin-amd64 -o /usr/local/bin/get-ecs-services
 chmod +x /usr/local/bin/get-ecs-services
@@ -27,4 +31,8 @@ chmod +x /usr/local/bin/ecs-power
 echo git-bump
 curl -f -L https://github.com/b4b4r07/git-bump/releases/download/v0.1.1/git-bump_darwin_x86_64.tar.gz | tar -xz -C /usr/local/bin/
 chmod +x /usr/local/bin/git-bump
+
+echo go-confluence
+curl -f -L https://github.com/justmiles/go-markdown2confluence/releases/download/v3.1.1/go-markdown2confluence_3.1.1_darwin_x86_64.tar.gz | tar -xz -C /usr/local/bin/
+chmod +x /usr/local/bin/markdown2confluence
 #############################################################################################################################################################
