@@ -30,3 +30,7 @@ vim.symlink/base16*
 .idea
 
 DNS/g2l-office.txt
+
+Brewfile.lock.json
+config.symlink/asciinema/
+config.symlink/http-prompt/

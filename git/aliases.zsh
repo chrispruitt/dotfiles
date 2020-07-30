@@ -126,3 +126,5 @@ alias gfhfinish='git flow hotfix finish ' # <version>
 alias gfhpush='git flow hotfix publish ' # <version>
 # Getting a published hotfix
 alias gfhpull='git flow hotfix pull origin ' # <hotfix-name>
+
+alias git-rm-all-branches='git branch | grep -v "master" | xargs git branch -D '

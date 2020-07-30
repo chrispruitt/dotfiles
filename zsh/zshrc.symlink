@@ -37,6 +37,7 @@ export AIRFLOW_HOME=/Users/chris/airflow
 export PROJECTS=~/code
 
 # GO
+export GO111MODULE=on
 export GOPATH=~/go
 pathmunge $GOPATH/bin
 
@@ -79,9 +80,10 @@ done
 
 unset config_files
 
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# NVM - THIS LOADS VERY SLOWLY... alternative might be use as executable, needs testing
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+#[ -s "$HOME/.nvm/nvm.sh"  ] && . "$HOME/.nvm/nvm.sh" # This loads nvm
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 

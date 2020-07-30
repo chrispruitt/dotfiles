@@ -12,6 +12,9 @@ alias restartdb='mysql.server restart'
 alias startdb='mysql.server start'
 alias stopdb='mysql.server stop'
 
+# Scratch Code
+alias sandbox="code $HOME/workspace/pruitt/sandbox"
+
 #keycloak
 alias startkeycloak='docker run -p8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak'
 
