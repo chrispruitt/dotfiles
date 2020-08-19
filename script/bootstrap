@@ -130,12 +130,24 @@ install_dotfiles () {
 
   local overwrite_all=true backup_all=false skip_all=false
 
+  info 'symlink to home directory'
   for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path '*.git*')
   do
     echo "creating symlink for ${src}"
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
+
+  info 'symlink vscode files'
+  OIFS="$IFS"
+  IFS=$'\n'
+  for src in $(find -H "$DOTFILES_ROOT/vscode" -maxdepth 8 -name '*.symlink.withpath' -not -path '*.git*')
+  do
+    echo "creating symlink for ${src}"
+    dst="${src//.dotfiles\/vscode\//}"
+    link_file "$src" "${dst%.*.*}"
+  done
+  IFS="$OIFS"
 }
 
 setup_gitconfig

@@ -34,3 +34,4 @@ DNS/g2l-office.txt
 Brewfile.lock.json
 config.symlink/asciinema/
 config.symlink/http-prompt/
+config.symlink/yarn/

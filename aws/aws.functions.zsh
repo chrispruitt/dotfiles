@@ -195,7 +195,7 @@ function aws-bounce-service() {
   local S_ENV=$1
   local SERVICE=$2
 
-  aws ecs stop-task --cluster ${S_ENV} --task $(aws ecs list-tasks --cluster ${S_ENV} --service ${SERVICE} | jq -r .taskArns[0])
+  aws ecs stop-task --cluster ${S_ENV} --task $(aws ecs list-tasks --cluster ${S_ENV} --service ${SERVICE} | jq -r '.taskArns[0]')
 }
 
 function aws-get-security-group-id() {

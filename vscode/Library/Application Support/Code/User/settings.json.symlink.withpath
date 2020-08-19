@@ -1,0 +1,7 @@
+{
+    "git.autofetch": true,
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "window.zoomLevel": 0,
+    "editor.codeActionsOnSave": null
+}
