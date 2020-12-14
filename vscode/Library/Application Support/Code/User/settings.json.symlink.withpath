@@ -3,5 +3,6 @@
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
     "window.zoomLevel": 0,
-    "editor.codeActionsOnSave": null
+    "editor.codeActionsOnSave": null,
+    "dart.checkForSdkUpdates": false
 }

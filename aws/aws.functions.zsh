@@ -214,7 +214,7 @@ function aws-whitelist-ip() {
   local FILTER_SECURITY_GROUP_NAME=$1
 
   local SECURITY_GROUP_ID=$(aws-get-security-group-id ${FILTER_SECURITY_GROUP_NAME})
-  local LOCAL_IP=$(curl -s v4.ifconfig.co)
+  local LOCAL_IP=$(curl -s -4 v4.ifconfig.co)
   
   aws ec2 authorize-security-group-ingress --group-id ${SECURITY_GROUP_ID} --ip-permissions IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges="[{CidrIp=${LOCAL_IP}/32,Description=\"${USER} - $(date)\"}]"
 }
@@ -223,7 +223,7 @@ function aws-whitelist-ip-revoke() {
   local FILTER_SECURITY_GROUP_NAME=$1
 
   local SECURITY_GROUP_ID=$(aws-get-security-group-id ${FILTER_SECURITY_GROUP_NAME})
-  local LOCAL_IP=$(curl -s v4.ifconfig.co)
+  local LOCAL_IP=$(curl -s -4 v4.ifconfig.co)
   echo $(aws ec2 revoke-security-group-ingress --group-id ${SECURITY_GROUP_ID} --protocol tcp --port 22 --cidr ${LOCAL_IP}/32)
 }
 

@@ -72,6 +72,7 @@ alias gbb='git bisect bad'
 alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias gbv='git branch -v'
 alias gcb='git checkout -b'
+alias gcmp='git checkout master; git pull'
 
 
 #
