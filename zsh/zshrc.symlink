@@ -33,6 +33,10 @@ autoload -U +X bashcompinit && bashcompinit
 autoload -U +X compinit && compinit
 
 export AIRFLOW_HOME=/Users/chris/airflow
+
+# For G2 Airflow dag development
+export AIRFLOW_DAG_MOUNT_DIRECTORY=$HOME/workspace/g2lytics/misc/airflow-dags/dags
+
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/code
 

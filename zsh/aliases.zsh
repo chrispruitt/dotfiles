@@ -12,11 +12,9 @@ alias restartdb='mysql.server restart'
 alias startdb='mysql.server start'
 alias stopdb='mysql.server stop'
 
-# Open project in Code
-alias sandbox="code $HOME/workspace/pruitt/sandbox"
-
-# Open project in intellij
-alias idt="idea $HOME/workspace/g2lytics/misc/terraform"
+# Open projects
+alias opensandbox="code $HOME/workspace/pruitt/sandbox"
+alias openterraform="idea $HOME/workspace/g2lytics/misc/terraform"
 
 #keycloak
 alias startkeycloak='docker run -p8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin jboss/keycloak'
@@ -51,12 +49,12 @@ alias wp='cd $HOME/workspace/pruitt'
 alias wt='cd $HOME/workspace/tutorials'
 alias makesrc='mkdir -p ~/code/apis ~/code/data ~/code/oss ~/code/services ~/code/syncs ~/code/tmp ~/code/tools'
 alias wsp='cd $HOME/workspace/projects'
-alias kbn='cd /keybase/private/chrispruitt/notes'
-alias kbn='cd /keybase/public/chrispruitt'
-alias kb='cd /keybase'
+alias kbn='cd /Volumes/Keybase/private/chrispruitt/notes'
+alias kbp='cd /Volumes/Keybase/public/chrispruitt'
+alias kb='cd /Volumes/Keybase'
 
 # markdown notes
-alias notes='open -a typora /keybase/private/chrispruitt/notes/'
+alias notes='open -a typora /Volumes/Keybase/private/chrispruitt/notes/'
 
 # typora
 alias typora="open -a typora"
