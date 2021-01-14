@@ -1,0 +1,10 @@
+#!/bin/bash
+
+URL=$(git remote get-url --push origin)
+HTTP="https://github.com/"
+if [[ "$URL" == *"$HTTP"* ]]; then
+    SSH_URL=${URL/$HTTP/git@github.com:}
+    git remote set-url origin $SSH_URL
+fi
+
+echo "git remote set to: $(git remote get-url --all origin)"
