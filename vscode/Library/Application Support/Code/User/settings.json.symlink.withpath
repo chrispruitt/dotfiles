@@ -4,5 +4,8 @@
     "go.useLanguageServer": true,
     "window.zoomLevel": 0,
     "editor.codeActionsOnSave": null,
-    "dart.checkForSdkUpdates": false
+    "dart.checkForSdkUpdates": false,
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
 }

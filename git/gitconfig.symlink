@@ -36,5 +36,7 @@
 
 [jira]
         url = https://g2lytics.atlassian.net
-[init]
-        templateDir = /Users/chris.pruitt/.git_templates
+
+# if .git_templates does not exits, git init is generated with proper defaults        
+# [init]
+#         templateDir = /Users/chris/.git_templates
