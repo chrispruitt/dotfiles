@@ -4,7 +4,7 @@ AWS_DIR="${HOME}/.aws"
 AWS_WORKSPACE_DIR="${AWS_DIR}/.workspaces"
 
 rm -rf ${AWS_WORKSPACE_DIR}
-mkdir ${AWS_WORKSPACE_DIR}
+mkdir -p ${AWS_WORKSPACE_DIR}
 
 while read line; do
     if [[ ${line} =~ "\\[.*\\]" ]]; then

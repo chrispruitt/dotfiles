@@ -104,5 +104,10 @@ alias joke='curl -H "Accept: text/plain" https://icanhazdadjoke.com/ && echo '
 # weather
 alias weather='curl wttr.in'
 
+# gopass frequents
 alias sftp-ga-prod='sshpass -p $(gopass show -f -o g2lytics/client/ga/prod/sftp/rdecardenas) sftp rdecardenas@eft.dor.ga.gov'
 alias sftp-ga-test='sshpass -p $(gopass show -f -o g2lytics/client/ga/test/sftp/rdecardenas) sftp rdecardenas@eft-test.dor.ga.gov'
+alias cyber-hygiene-assessment-pass='gopass show -c g2lytics/misc/ncats-pdf'
+
+# unset AWS workspace and clear
+alias clr='unset AWS_PROFILE; clear'
