@@ -111,3 +111,6 @@ alias cyber-hygiene-assessment-pass='gopass show -c g2lytics/misc/ncats-pdf'
 
 # unset AWS workspace and clear
 alias clr='unset AWS_PROFILE; clear'
+
+# remove all terraform init files recursively
+alias tf-reset-all='find . -name .terraform -exec rm -rf {} \;'
