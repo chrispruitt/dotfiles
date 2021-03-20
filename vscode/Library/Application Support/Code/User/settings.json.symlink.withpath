@@ -2,13 +2,18 @@
     "git.autofetch": true,
     "go.formatTool": "goimports",
     "go.useLanguageServer": true,
-    "window.zoomLevel": 0,
     "editor.codeActionsOnSave": null,
     "dart.checkForSdkUpdates": false,
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnType": true
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ]
 }

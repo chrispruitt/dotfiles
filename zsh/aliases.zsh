@@ -114,3 +114,7 @@ alias clr='unset AWS_PROFILE; clear'
 
 # remove all terraform init files recursively
 alias tf-reset-all='find . -name .terraform -exec rm -rf {} \;'
+
+# python frequents
+# activate python env in current durectory
+alias pve='source venv/bin/activate'
