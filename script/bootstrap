@@ -137,7 +137,6 @@ install_dotfiles () {
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
-
   info 'symlink vscode files'
   OIFS="$IFS"
   IFS=$'\n'

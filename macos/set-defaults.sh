@@ -1,6 +1,9 @@
 # Gratuitously stolen from @mathiasbynens
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 
+# Documentation for macos default command
+# https://macos-defaults.com/#%F0%9F%99%8B-what-s-a-defaults-command
+
 # Disable menu bar transparency
 defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
@@ -77,6 +80,13 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
+################################################################################################################
+# FINDER
+################################################################################################################
+
+# Show All hidden files
+defaults write com.apple.finder AppleShowAllFiles true
+
 # Allow quitting Finder via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
 
@@ -129,16 +139,75 @@ defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
-# # Hot corners
-# # Top left screen corner → Mission Control
-# defaults write com.apple.dock wvous-tl-corner -int 2
-# defaults write com.apple.dock wvous-tl-modifier -int 0
-# # Top right screen corner → Desktop
-# defaults write com.apple.dock wvous-tr-corner -int 4
-# defaults write com.apple.dock wvous-tr-modifier -int 0
-# # Bottom left screen corner → Start screen saver
-# defaults write com.apple.dock wvous-bl-corner -int 5
-# defaults write com.apple.dock wvous-bl-modifier -int 0
+###############################################################################
+# Dock                                                                        #
+###############################################################################
+# Don’t show Dashboard as a Space
+defaults write com.apple.dock dashboard-in-overlay -bool true
+
+# Don’t automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+# Remove the auto-hiding Dock delay
+# defaults write com.apple.dock autohide-delay -float 0
+# Remove the animation when hiding/showing the Dock
+# defaults write com.apple.dock autohide-time-modifier -float 0
+
+# Automatically hide and show the Dock
+# defaults write com.apple.dock autohide -bool true
+
+# Make Dock icons of hidden applications translucent
+defaults write com.apple.dock showhidden -bool true  
+
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+###############################################################################
+# Screen                                                                      #
+###############################################################################
+
+# Require password immediately after sleep or screen saver begins
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+# Save screenshots to the desktop
+defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+
+# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+defaults write com.apple.screencapture type -string "png"
+
+# Disable shadow in screenshots
+defaults write com.apple.screencapture disable-shadow -bool true
+
+# Enable subpixel font rendering on non-Apple LCDs
+# Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
+defaults write NSGlobalDomain AppleFontSmoothing -int 1
+
+# Hot corners
+# Possible values:
+#  0: no-op
+#  2: Mission Control
+#  3: Show application windows
+#  4: Desktop
+#  5: Start screen saver
+#  6: Disable screen saver
+#  7: Dashboard
+# 10: Put display to sleep
+# 11: Launchpad
+# 12: Notification Center
+# 13: Lock Screen
+# Bottom right screen corner → Desktop
+defaults write com.apple.dock wvous-br-corner -int 4
+defaults write com.apple.dock wvous-br-modifier -int 0
+# Top right screen corner → Show applications
+defaults write com.apple.dock wvous-tr-corner -int 3
+defaults write com.apple.dock wvous-tr-modifier -int 0
+# Bottom left screen corner → Sleep
+defaults write com.apple.dock wvous-bl-corner -int 10
+defaults write com.apple.dock wvous-bl-modifier -int 0
+# Top left screen corner → no-op
+defaults write com.apple.dock wvous-bl-corner -int 0
+defaults write com.apple.dock wvous-bl-modifier -int 0
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
 defaults write com.apple.dock mouse-over-hilte-stack -bool true
@@ -242,6 +311,20 @@ defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool
 # file=/Applications/Dropbox.app/Contents/Resources/check.icns
 # [ -e "$file" ] && mv -f "$file" "$file.bak"
 # unset file
+
+#############################################################################################################
+# Power management
+#############################################################################################################
+
+# Put machine to sleep after x minutes
+sudo pmset sleep 30
+
+# Put display to sleep after x minutes
+sudo pmset displaysleep 30
+
+# fix termainal for ^M on enter issue - https://askubuntu.com/questions/441744/pressing-enter-produces-m-instead-of-a-newline
+stty sane
+
 
 # Kill affected applications
 for app in Finder Dock Mail Safari iTunes iCal Address\ Book SystemUIServer; do killall "$app" > /dev/null 2>&1; done

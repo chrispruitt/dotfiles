@@ -39,4 +39,4 @@
 
 # if .git_templates does not exits, git init is generated with proper defaults        
 # [init]
-#         templateDir = /Users/chris/.git_templates
+#         templateDir = ${HOME}/.git_templates

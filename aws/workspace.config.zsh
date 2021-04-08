@@ -19,6 +19,7 @@ _awsworkspace() {
   COMPREPLY=()
   cur=${COMP_WORDS[COMP_CWORD]}
   WORDS="$(ls ${AWS_WORKSPACE_DIR} | sed 's/.sh$//g' | grep -v default)"
+  echo running
   case "$cur" in
     *)
       COMPREPLY=($(compgen -W "$WORDS" -- "$cur"))
