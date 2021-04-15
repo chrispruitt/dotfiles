@@ -2,7 +2,7 @@
 alias reload!='. ~/.zshrc'
 
 # Open dotfiles in VS Code
-alias dotfiles='code ~/.dotfiles/'
+alias dotfiles='idea ~/.dotfiles/'
 
 alias name='scutil --get ComputerName' # get computer name
 
@@ -119,3 +119,6 @@ alias tf-reset-all='find . -name .terraform -exec rm -rf {} \;'
 # python frequents
 # activate python env in current durectory
 alias pve='source venv/bin/activate'
+
+# 2fa
+alias 2f='2fa figg/jumpcloud.com | pbcopy'

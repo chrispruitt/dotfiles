@@ -1,0 +1,43 @@
+#!/bin/sh
+
+#
+# aws-rehost-docker-image
+#
+# pulls a public docker hub image and 'rehosts' it on ECR with the same name and tag of the public image
+#
+#   $1 - docker hub public image
+#   $2 - docker hub tag
+#
+# Examples:
+#
+#   aws-rehost-docker-image tryretool/backend 2.68.81
+#
+# Dependencies:
+#
+#   - docker
+#   - aws cli
+#   - jq
+
+IMAGE=${1}
+TAG=${2}
+
+# 2.66.81
+
+# Pull public image from dockerhub
+docker pull ${IMAGE}:${TAG}
+
+# Create repo if not exists
+aws ecr create-repository --repository-name ${IMAGE} || true
+
+# Get repo uri
+ECR_REPO_URI=$(aws ecr describe-repositories --repository-name ${IMAGE} | jq -r '.repositories[0].repositoryUri')
+
+# Login to ecr
+aws ecr get-login-password | docker login --username AWS --password-stdin ${ECR_REPO_URI}
+
+# Tag image
+docker image tag ${IMAGE}:${TAG} ${ECR_REPO_URI}:${TAG}
+
+# Push to ECR
+echo "Pushing to ECR...${ECR_REPO_URI}:${TAG}"
+docker push ${ECR_REPO_URI}:${TAG}

@@ -2,8 +2,9 @@
 touch $HOME/.envs
 source $HOME/.envs
 
-# gopass fig password location
+# gopass password locations
 export PASS_NAME=figg/jumpcloud.com
+export OPENVPN_PASS=figg/openvpn.ops.i-edo.net
 
 # Add to PATH if not exists function
 function pathmunge () {
@@ -15,6 +16,9 @@ function pathmunge () {
            fi
         fi
 }
+
+# add openvpn to path to open client via commandline
+pathmunge "$(brew --prefix openvpn)/sbin"
 
 # History Search
 hs() { fc -lim "*$@*" 1 }
@@ -83,6 +87,9 @@ done
 autoload -U compinit
 compinit
 
+# initialize aws cli autocomplete
+complete -C '$(which aws_completer)' aws
+
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}
 do
@@ -130,3 +137,7 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f ${HOME}/workspace/tutorials/angularSeo/node_modules/tabtab/.completions/sls.zsh ]] && . ${HOME}/workspace/tutorials/angularSeo/node_modules/tabtab/.completions/sls.zsh
+
+
+# enable gopass auto completion
+source <(gopass completion bash)
