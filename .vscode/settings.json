@@ -1,6 +1,5 @@
 {
     "files.associations": {
-      "**/*.json.symlink": "json",
-      "**/*.json.symlink.withpath": "json"
+      "zshrc.symlink": "bash"
     }
   }

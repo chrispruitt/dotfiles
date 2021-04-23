@@ -35,6 +35,7 @@ brew 'asciinema'
 brew 'saml2aws'
 brew 'openvpn'
 brew 'expect'
+brew 'speedtest-cli'
 
 # Dependencies for gopass password manager on macos
 brew 'gnupg'

@@ -17,9 +17,6 @@ function pathmunge () {
         fi
 }
 
-# add openvpn to path to open client via commandline
-pathmunge "$(brew --prefix openvpn)/sbin"
-
 # History Search
 hs() { fc -lim "*$@*" 1 }
 
@@ -141,3 +138,6 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 # enable gopass auto completion
 source <(gopass completion bash)
+
+# add openvpn to path to open client via commandline
+pathmunge "$(brew --prefix openvpn)/sbin"

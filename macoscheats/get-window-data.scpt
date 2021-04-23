@@ -36,18 +36,38 @@ tell application "Finder"
 
 end tell
 
+log currentSettings
+
 
 if (button returned of dialogResult is "Save") then
 --  log "Saving"
   try
     tell application "System Events"
+    log class of currentSettings
+    log (get w of currentSettings) as text
+    set configString to "{w:" & (get w of currentSettings) as text & ", h:" & (get h of currentSettings) as text & ", apps:" & "{"
+    --set configString to "w:3840, h:1980, apps:"
+      set isFirst to true
       repeat with proc in application processes where background only is false
         tell proc
           set procName to name of proc
           if (count of windows) > 0 then
-            log procName
+            
             set appSize to size of window 1
             set appPosition to position of window 1
+
+            set appConfigString to "{name:\"" & procName & "\", pos:{" & item 1 of appPosition & ", " & item 2 of appPosition & "}, size:{" & item 1 of appSize & ", " & item 2 of appSize & "}}"
+            -- set appConfigString to "name:" & procName & ", size:" & item 1 of appSize & ", " & item 2 of appSize & ", pos:" & item 1 of appPosition & ", " & item 2 of appPosition
+
+            if isFirst then
+              set isFirst to false
+              set configString to configString & appConfigString
+            else
+              set configString to configString & ", " & appConfigString
+            end if
+            
+            -- Log human readable
+            log procName
             log {size: appSize}
             log {position: appPosition}
             log ""
@@ -55,51 +75,19 @@ if (button returned of dialogResult is "Save") then
             set appSize to {0}
             set appPosition to {0}
           end if
---          set appSettings to {}
---
---          repeat with i from 1 to (count of apps of currentSettings)
---            if name of item i of apps of currentSettings is procName then
---             set appSettings to item i of apps of currentSettings
---            end if
---          end repeat
-
---          if (count of appSettings) is 0 then
---            set appSettings to {name:procName, pos:appPosition, size:appSize}
---            set end of apps of currentSettings to appSettings
---          else
---            set pos of appSettings to appPosition
---            set size of appSettings to appSize
---          end if
         end tell
       end repeat
+      set configString to configString & "}}"
+      log "Window Configuration String"
+      log configString
+      set target_file to (((path to home folder) as text) & ".dotfiles:macoscheats:windowSettings.txt")
+
+      set the target_file to the target_file as text
+      set the open_target_file to open for access file target_file with write permission
+      set eof of the open_target_file to 0
+      write configString to the open_target_file starting at eof
+      close access the open_target_file
+
     end tell
   end try
 end if
-
---if (button returned of dialogResult is "Restore") then
---  if (count of apps of currentSettings) is 0 then
---    say "no window settings were found"
---  else
---    log "Restoring..."
---    repeat with i from 1 to (count of apps of currentSettings)
---      set appSettings to item i of apps of currentSettings
---      set appName to (name of appSettings as string)
---      try
---        tell application "System Events"
---          repeat with proc in application processes where name is appName
---            tell proc
---              log appName
---              if name is appName then
---                repeat with win in windows
---                  set position of win to pos of appSettings
---                  set size of win to size of appSettings
---                end repeat
---              end if
---            end tell
---          end repeat
---        end tell
---      end try
---    end repeat
---    log "Done."
---  end if
---end if

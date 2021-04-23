@@ -1,8 +1,11 @@
 # Reload it all
 alias reload!='. ~/.zshrc'
 
+# open vscode code-insiders with code
+alias code="code-insiders"
+
 # Open dotfiles in VS Code
-alias dotfiles='idea ~/.dotfiles/'
+alias dotfiles="code ~/.dotfiles"
 
 alias name='scutil --get ComputerName' # get computer name
 
@@ -26,7 +29,7 @@ alias readlink='greadlink'
 alias ...='cd ../..'
 alias ..='cd ..'
 alias .d='cd ~/.dotfiles'
-alias h='history'
+alias h='f(){ fc -ln -${1:-20} }; f'
 
 
 alias rf='rm -rf'
@@ -122,3 +125,9 @@ alias pve='source venv/bin/activate'
 
 # 2fa
 alias 2f='2fa figg/jumpcloud.com | pbcopy'
+
+# convert aws policy in clipboard to terraform
+alias policy2terraform="pbpaste | iam-policy-json-to-terraform | pbcopy"
+
+# get my public ip
+alias my-public-ip="curl -s -4 v4.ifconfig.co"
