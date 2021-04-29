@@ -27,6 +27,9 @@ vim.symlink/plugged
 vim.symlink/README.md
 vim.symlink/base16*
 
+vscode-insiders.symlink/argv.json
+vscode-insiders.symlink/extensions/
+
 .idea
 
 DNS/g2l-office.txt
