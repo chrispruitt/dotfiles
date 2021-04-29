@@ -1,3 +1,3 @@
 {
-    "recommendations": ["dotiful.dotfiles-syntax-highlighting", "eamodio.gitlens"]
+    "recommendations": ["dotiful.dotfiles-syntax-highlighting", "eamodio.gitlens", "dotiful.dotfiles-syntax-highlighting"]
 }

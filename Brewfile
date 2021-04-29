@@ -30,7 +30,7 @@ brew 'saw'
 brew 'go'
 brew 'python'
 brew 'goreleaser/tap/goreleaser'
-brew 'warrensbox/tap/tfswitch'
+# brew 'warrensbox/tap/tfswitch' // can reinstall this when https://github.com/warrensbox/terraform-switcher/issues/152 is resolved - manually applied fix with https://github.com/chrispruitt/terraform-switcher for now
 brew 'asciinema'
 brew 'saml2aws'
 brew 'openvpn'

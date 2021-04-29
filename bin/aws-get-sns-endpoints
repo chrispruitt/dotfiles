@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# Get a list of sns topic arns filtering by endpoints that contain a string
+#
+# $1 - filter string
+#
+# Examples
+#
+#   aws-get-sns-endpoints http
+
+FILTER=${1:-""}
+
+aws sns list-subscriptions | jq -r --arg FILTER "$FILTER" '.Subscriptions[] | select(.Endpoint | match("pager";"i")) | {Endpoint} + {TopicArn}'

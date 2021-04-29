@@ -7,6 +7,8 @@
 	co = checkout
         promote = !$ZSH/bin/git-promote
         wtf     = !$ZSH/bin/git-wtf
+        nuke     = !$ZSH/bin/git-nuke
+        nuke-tag     = !$ZSH/bin/git-nuke-tag
         rank-contributors = !$ZSH/bin/git-rank-contributors
         count   = !git shortlog -sn
 
@@ -18,7 +20,9 @@
         lazy-commit = "!git commit -m \"`git status -s --untracked-files=no`\""
         lazy-push = "!git add --all && git commit -m \"`git status -s`\" && git push"
         fsize = !git ls-tree -r -t -l --full-name HEAD | sort -rn -k 4 | less
+        current-branch = !git branch | grep '*' | cut -d ' ' -f2
         flatten = !git reset $(git merge-base master $(git current-branch)) && git add -A
+        force = !git push --force
         authors = !git log | grep Author | sed 's/Author: //'| sort | uniq -c | sort -h
         whoami = !echo "$(git config --global user.name) - $(git config --global user.email)"
         jira = !jira $(git current-branch)
