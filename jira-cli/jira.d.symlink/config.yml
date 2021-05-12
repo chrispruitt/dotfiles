@@ -1,0 +1,48 @@
+endpoint: https://gofigg.atlassian.net
+login: cpruitt@gofigg.com
+password-source: gopass
+password-name: figg/atlassian/cpruitt@gofigg.com/apitoken
+
+project: PLAT
+
+custom-commands:
+  - name: mine-standup
+    help: display issues assigned to me for current sprint
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --template standup --query "sprint in openSprints() and status = 'In Progress' and resolution = unresolved and assignee=currentuser() and project = $JIRA_PROJECT ORDER BY priority asc, created"
+      else
+          # otherwise list issues for all project
+          {{jira}} list --template standup --query "sprint in openSprints() and status = 'In Progress' and resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
+      fi
+  - name: mine
+    help: display issues assigned to me for current sprint
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --template table --query "sprint in openSprints() and resolution = unresolved and assignee=currentuser() and project = $JIRA_PROJECT ORDER BY priority asc, created"
+      else
+          # otherwise list issues for all project
+          {{jira}} list --template table --query "sprint in openSprints() and resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
+      fi
+  - name: mine-all
+    help: display all issues assigned to me, even backlog
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --template table --query "resolution = unresolved and assignee=currentuser() and project = $JIRA_PROJECT ORDER BY priority asc, created"
+      else
+          # otherwise list issues for all project
+          {{jira}} list --template table --query "resolution = unresolved and assignee=currentuser() ORDER BY priority asc, created"
+      fi
+  - name: sprint
+    help: display issues for active sprint
+    script: |-
+      if [ -n "$JIRA_PROJECT" ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --template table --query "sprint in openSprints() and type != epic and resolution = unresolved and project=$JIRA_PROJECT ORDER BY rank asc, created"
+      else
+          # otherwise list issues for all project
+          {{jira}} list --template table --query "sprint in openSprints() and type != epic and resolution = unresolved ORDER BY rank asc, created"
+      fi

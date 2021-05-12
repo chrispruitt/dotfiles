@@ -1,6 +1,6 @@
 # Install cool tools! #######################################################################################################################################
 
-echo Installing Cool AWS tools
+echo Installing Cool tools...
 # get-ssm-params - https://github.com/justmiles/go-get-ssm-params
 
 echo ssm-get-params
@@ -35,4 +35,6 @@ chmod +x /usr/local/bin/git-bump
 echo go-confluence
 curl -f -L https://github.com/justmiles/go-markdown2confluence/releases/download/v3.1.1/go-markdown2confluence_3.1.1_darwin_x86_64.tar.gz | tar -xz -C /usr/local/bin/
 chmod +x /usr/local/bin/markdown2confluence
+
+echo Done installing cool tools.
 #############################################################################################################################################################
