@@ -131,3 +131,9 @@ alias policy2terraform="pbpaste | iam-policy-json-to-terraform | pbcopy"
 
 # get my public ip
 alias my-public-ip="curl -s -4 v4.ifconfig.co"
+
+# publish to personal figg confluence page
+alias wiki-push-figg="go-markdown2confluence --password $(gopass show -o figg/atlassian/cpruitt@gofigg.com/apitoken) --endpoint https://gofigg.atlassian.net/wiki --username cpruitt@gofigg.com --space chrispruitt /Volumes/Keybase/private/chrispruitt/notes/Figg"
+
+# gopass
+alias gop="gopass"

@@ -11,7 +11,7 @@ property allSettings: {}
 --log class of windowSettings
 
 -- create a variable for the current settings
-set currentSettings to {w:4153, h:1980, apps:{{name:"Keybase", pos:{-1920, 0}, size:{960, 600}}, {name:"firefox", pos:{1920, 0}, size:{1920, 1080}}, {name:"Slack", pos:{-960, 0}, size:{960, 1080}}, {name:"iTerm2", pos:{-1920, 0}, size:{960, 540}}, {name:"Typora", pos:{-1920, 0}, size:{960, 1080}}, {name:"Electron", pos:{0, 25}, size:{1920, 1055}}, {name:"Calendar", pos:{-1920, 449}, size:{960, 631}}, {name:"Finder", pos:{1951, 401}, size:{968, 545}}, {name:"idea", pos:{0, 25}, size:{1920, 1055}}}}
+set currentSettings to {w:4153, h:1980, apps:{{name:"Keybase", pos:{-1920, 0}, size:{960, 600}}, {name:"firefox", pos:{1920, 0}}, {name:"Google Chrome", pos:{1920, 0}, size:{1920, 1080}}, {name:"Slack", pos:{-960, 0}, size:{960, 1080}}, {name:"iTerm2", pos:{-1920, 0}, size:{960, 540}}, {name:"Typora", pos:{-1920, 0}, size:{960, 1080}}, {name:"Electron", pos:{0, 25}, size:{1920, 1055}}, {name:"Calendar", pos:{-1920, 449}, size:{960, 631}}, {name:"Finder", pos:{1951, 401}, size:{968, 545}}, {name:"idea", pos:{0, 25}, size:{1920, 1055}}}}
 
 --display dialog "Restore or save window settings?" buttons {"Restore", "Save"} default button "Restore"
 --set dialogResult to result

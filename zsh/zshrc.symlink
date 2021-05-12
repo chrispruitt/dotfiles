@@ -81,8 +81,9 @@ do
 done
 
 # initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
+autoload -Uz compinit
 compinit
+zstyle ':completion:*' menu select
 
 # initialize aws cli autocomplete
 complete -C '$(which aws_completer)' aws
