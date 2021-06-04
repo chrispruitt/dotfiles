@@ -5,12 +5,13 @@
         protocol = https
 [alias]
 	co = checkout
-        promote = !$ZSH/bin/git-promote
-        wtf     = !$ZSH/bin/git-wtf
-        nuke     = !$ZSH/bin/git-nuke
-        nuke-tag     = !$ZSH/bin/git-nuke-tag
+        promote           = !$ZSH/bin/git-promote
+        wtf               = !$ZSH/bin/git-wtf
+        nuke              = !$ZSH/bin/git-nuke
+        nuke-tag          = !$ZSH/bin/git-nuke-tag
         rank-contributors = !$ZSH/bin/git-rank-contributors
-        count   = !git shortlog -sn
+        count             = !git shortlog -sn
+        back              = !git checkout master; git pull
 
         clone-figg = !git clone git@bitbucket.org:figg/$1.git $1 && cd $1 && git config user.email cpruitt@gofigg.com
         clone-gadgetry = !git clone $1 && git config user.email chris.pruitt@gadgetry.io
@@ -62,13 +63,14 @@
         #
         # Setting to git 2.0 default to suppress warning message
         default = simple
+[pull]
+        # default to merge on pull
+        rebase = false
 
 [jira]
-        url = https://g2lytics.atlassian.net
+        url = https://figg.atlassian.net
 
 # if .git_templates does not exits, git init is generated with proper defaults        
 # [init]
 #         templateDir = ${HOME}/.git_templates
-
-[alias]
   

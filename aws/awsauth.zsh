@@ -1,6 +1,9 @@
 export SAML2AWS_MFA_TOKEN=$(2fa $PASS_NAME) 
 export SAML2AWS_PASSWORD=$(gopass show $PASS_NAME | head -1) 
 
+setawsenvs() {
+  export AWS_ACCOUNT=$(aws sts get-caller-identity | jq -r .Account)
+}
 
 _awsauth() {
   local cur
@@ -21,6 +24,8 @@ awsauth () {
 	export SAML2AWS_MFA_TOKEN=$(2fa $PASS_NAME) 
 	export SAML2AWS_PASSWORD=$(gopass show $PASS_NAME | head -1) 
 	saml2aws login --idp-account $SAML_PROFILE --skip-prompt
+
+  setawsenvs
 }
 
 complete -F _awsauth awsauth

@@ -1,4 +1,4 @@
 {{- /* standup template */ -}}
 {{range .issues}}
-  :fire: [{{.key}}] {{.fields.summary}}
+:fire: [{{.key}}] {{.fields.summary}}
 {{- end -}}

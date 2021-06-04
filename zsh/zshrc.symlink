@@ -6,6 +6,8 @@ source $HOME/.envs
 export PASS_NAME=figg/jumpcloud.com
 export OPENVPN_PASS=figg/openvpn.ops.i-edo.net
 
+export GITHUB_TOKEN=$(gopass show -o websites/github.com/chris.pruitt15@gmail.com/apitoken)
+
 # Add to PATH if not exists function
 function pathmunge () {
         if ! echo "$PATH" | grep -Eq "(^|:)$1($|:)" ; then

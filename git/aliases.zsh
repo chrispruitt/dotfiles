@@ -53,8 +53,6 @@ alias gsu='git submodule update' # gsu dir-from-gitmodules
 # Staged and cached are the same thing
 alias gdc='git diff --cached -w'
 alias gds='git diff --staged -w'
-alias gpub='grb publish'
-alias gtr='grb track'
 alias gpl='git pull'
 alias gplr='git pull --rebase'
 alias gps='git push'
@@ -72,7 +70,6 @@ alias gbb='git bisect bad'
 alias gdmb='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
 alias gbv='git branch -v'
 alias gcb='git checkout -b'
-alias gcmp='git checkout master; git pull'
 
 
 #

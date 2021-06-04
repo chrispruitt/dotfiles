@@ -1,3 +1,9 @@
+aws-docker-login-ecr () {
+	ACCOUNT=$(aws sts get-caller-identity --query 'Account' --output text) 
+	REGION=$(aws configure get region) 
+	aws ecr get-login-password | docker login --username AWS --password-stdin ${ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com
+}
+
 function aws-update-function-code() {
   export LAMBDA_NAME=$1
   export ARTIFACT_FILE_PATH="fileb://${pwd}${2}"

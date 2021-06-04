@@ -137,3 +137,6 @@ alias wiki-push-figg="go-markdown2confluence --password $(gopass show -o figg/at
 
 # gopass
 alias gop="gopass"
+
+# get-standup-meeting
+alias stm="echo meet.google.com/vex-iqqo-upg | pbcopy"
