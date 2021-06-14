@@ -1,12 +1,4 @@
-# export env secrets
-touch $HOME/.envs
-source $HOME/.envs
-
-# gopass password locations
-export PASS_NAME=figg/jumpcloud.com
-export OPENVPN_PASS=figg/openvpn.ops.i-edo.net
-
-export GITHUB_TOKEN=$(gopass show -o websites/github.com/chris.pruitt15@gmail.com/apitoken)
+source $HOME/.dotfiles/system/env.zsh
 
 # Add to PATH if not exists function
 function pathmunge () {
@@ -144,3 +136,6 @@ source <(gopass completion bash)
 
 # add openvpn to path to open client via commandline
 pathmunge "$(brew --prefix openvpn)/sbin"
+
+# gopass
+export GITHUB_TOKEN=$(gopass show -o websites/github.com/chris.pruitt15@gmail.com/apitoken)

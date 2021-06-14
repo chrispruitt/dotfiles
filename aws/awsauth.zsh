@@ -18,7 +18,7 @@ _awsauth() {
 }
 
 awsauth () {
-	SAML_PROFILE=$1 
+	SAML_PROFILE=${1:=Figg-CLXAdministrator} 
 	export AWS_PROFILE=$(cat ~/.saml2aws | grep -A20 "$SAML_PROFILE" | grep aws_profile | awk '{print $3}' | head -1) 
 	export AWS_REGION=$(cat ~/.saml2aws | grep -A20 "$SAML_PROFILE" | grep region | awk '{print $3}' | head -1) 
 	export SAML2AWS_MFA_TOKEN=$(2fa $PASS_NAME) 
