@@ -12,7 +12,7 @@
         rank-contributors = !$ZSH/bin/git-rank-contributors
         count             = !git shortlog -sn
         back              = "!git checkout master && git pull"
-
+         
         clone-figg = !git clone git@bitbucket.org:figg/$1.git $1 && cd $1 && git config user.email cpruitt@gofigg.com
         clone-gadgetry = !git clone $1 && git config user.email chris.pruitt@gadgetry.io
 
