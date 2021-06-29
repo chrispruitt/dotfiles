@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+aws ec2 describe-subnets \
+| jq -r \
+'["VpcId","SubnetId","AZ","Cidr","TagName"], (.Subnets[] | [.VpcId, .SubnetId, .AvailabilityZone, .CidrBlock, (.Tags[] | select(.Key | match("Name";"i")) | .Value)]) | @tsv' | column -t | sort

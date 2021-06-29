@@ -10,4 +10,4 @@
 
 FILTER=${1:-""}
 
-aws sns list-subscriptions | jq -r --arg FILTER "$FILTER" '.Subscriptions[] | select(.Endpoint | match("pager";"i")) | {Endpoint} + {TopicArn}'
+aws sns list-subscriptions | jq -r --arg FILTER "$FILTER" '.Subscriptions[] | select(.Endpoint | match($FILTER;"i")) | {Endpoint} + {TopicArn}'

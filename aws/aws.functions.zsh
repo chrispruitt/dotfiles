@@ -233,6 +233,10 @@ function aws-whitelist-ip-revoke() {
   echo $(aws ec2 revoke-security-group-ingress --group-id ${SECURITY_GROUP_ID} --protocol tcp --port 22 --cidr ${LOCAL_IP}/32)
 }
 
+function aws-ecs-watch() {
+  watch -n 5 ecsq services $1 --filter=$2
+}
+
 #function aws-deactivate-mfa-openvpn() {
 #  local USERNAME=$1
 #  echo "Whitelisting IP for OpenVpn Server"

@@ -50,7 +50,7 @@ nnoremap <Leader>= :vertical resize +5<CR>
 " enable omnicomplete
 set omnifunc=syntaxcomplete#Complete
 
-" fix shitty mouse and nerdtree focus issue: thanks old Brad
+" fix mouse and nerdtree focus issue: thanks old Brad
 if has("mouse_sgr")
   set ttymouse=sgr
 else
@@ -166,8 +166,8 @@ autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
 """""""""""""""""""""""""""""""""
 " NERDTree:
 """""""""""""""""""""""""""""""""
-" open when vim opens
-autocmd vimenter * NERDTree
+" open when vim opens unless invoked by git
+autocmd vimenter * if &filetype !=# 'gitcommit' | NERDTree | endif
 
 " open when C-j
 map <C-n> :NERDTreeToggle<CR>
@@ -289,3 +289,6 @@ let base16colorspace=256
 if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
+
+" Secure vim for gopass https://github.com/gopasspw/gopass/blob/master/docs/setup.md#securing-your-editor
+au BufNewFile,BufRead /private/**/gopass** setlocal noswapfile nobackup noundofile

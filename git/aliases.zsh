@@ -13,6 +13,7 @@ alias openrepo="git config --get remote.origin.url | awk '{ gsub(\":\",\"/\"); p
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
 alias gp='git push origin HEAD'
 alias gc='git commit'
+alias gcm='git commit -m'
 alias gca='git commit -a'
 alias gcb='git copy-branch-name'
 alias gb='git branch'
