@@ -9,3 +9,7 @@ set -e
 if [ "$OS" = "fedora" ]; then
   sudo yum install -y zsh
 fi
+
+# set as default shell
+echo "Change default shell to zsh."
+chsh -s $(which zsh)

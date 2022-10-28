@@ -30,3 +30,16 @@ function exit_if_installed(){
     trap 'rm -rf -- "$TMPDIR"' EXIT
     cd $TMPDIR
 }
+
+
+function exit_if_installed_with_flatpak(){
+    isInstalled=$(flatpak list | grep $1)
+    if [[ -z "$isInstalled" || ! "$FORCE_REINSTALL" = "y" ]]; then
+        exit 0
+    fi;
+    
+    echo installing $1
+    TMPDIR=$(mktemp -d)
+    trap 'rm -rf -- "$TMPDIR"' EXIT
+    cd $TMPDIR
+}
