@@ -17,7 +17,7 @@ terminal-title-show-when-single=false
 theme-variant='dark'
 unsafe-paste-alert=false
 use-tabs=true
-window-style='borderless'
+window-style='normal'
 
 [keybindings]
 session-add-down='<Primary><Shift>o'
@@ -27,7 +27,7 @@ session-synchronize-input='<Primary><Shift>l'
 
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
 background-color='#272822'
-background-transparency-percent=1
+background-transparency-percent=10
 badge-color-set=false
 bold-color-set=false
 cursor-colors-set=false
@@ -43,6 +43,7 @@ palette=['#272822', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#A1E
 scroll-on-output=false
 scrollback-lines=50000
 scrollback-unlimited=true
+terminal-bell='icon'
 use-custom-command=false
 use-theme-colors=false
 visible-name='Default'
