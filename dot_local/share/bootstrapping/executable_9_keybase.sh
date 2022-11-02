@@ -14,6 +14,11 @@ if [ "$OS" = "manjaro" ]; then
   run_keybase
 fi
 
+if [ "$OS" = "fedora" ]; then
+  sudo yum -y install https://prerelease.keybase.io/keybase_amd64.rpm
+  run_keybase
+fi
+
 if [ -e "/keybase/private/$USER/bootstrap.sh" ]; then
   echo "you may want to run this:"
   echo "> /keybase/private/$USER/bootstrap.sh"

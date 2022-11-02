@@ -1,0 +1,4 @@
+[custom0]
+binding='<Alt>semicolon'
+command='tilix --quake'
+name='tilix'
