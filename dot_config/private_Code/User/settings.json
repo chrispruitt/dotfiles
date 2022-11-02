@@ -53,5 +53,6 @@
     "terminal.integrated.defaultProfile.linux": "zsh",
     "tabnine.experimentalAutoImports": true,
     "window.newWindowDimensions": "inherit",
-    "plantuml.server": "https://www.plantuml.com/plantuml"
+    "plantuml.server": "https://www.plantuml.com/plantuml",
+    "files.autoSave": "onFocusChange"
 }
