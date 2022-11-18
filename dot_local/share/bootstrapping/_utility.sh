@@ -31,12 +31,21 @@ function exit_if_installed(){
     cd $TMPDIR
 }
 
-
 function exit_if_installed_with_flatpak(){
     isInstalled=$(flatpak list | grep $1)
     if [[ -z "$isInstalled" || ! "$FORCE_REINSTALL" = "y" ]]; then
         exit 0
     fi;
+    
+    echo installing $1
+    TMPDIR=$(mktemp -d)
+    trap 'rm -rf -- "$TMPDIR"' EXIT
+    cd $TMPDIR
+}
+
+function exit_if_installed_appimage(){
+    ls $HOME/.local/share/applications | grep $1  > /dev/null 2>/dev/null
+    [ $? -eq 0 ] && [ ! "$FORCE_REINSTALL" = "y" ] && exit 0
     
     echo installing $1
     TMPDIR=$(mktemp -d)
