@@ -119,3 +119,20 @@ function aws-paginated() {
   cat $OUTPUT | jq -s '{PaginatedResults: .}'
   rm -rf $OUTPUT
 }
+
+function aws-cmd-everywhere() {
+  # aws-cmd-everywhere
+  #   usage: aws-cmd-everywhere <any aws cli command>
+  
+  if [[ -z "$AWS_CONFIG_FILE" ]]; then
+    local AWS_CONFIG_FILE=~/.aws/config
+  fi
+
+  PROFILES="$(cat ${AWS_CONFIG_FILE} | grep "^\[profile " | sed 's/\[profile //;s/\]//' | grep Administrator)"
+
+  while IFS= read -r CMD_PROFILE; do
+  CMD="$@ --profile $CMD_PROFILE"
+    echo "\n executing '$CMD'\n"
+    eval $CMD
+  done <<< "$PROFILES"
+}
