@@ -136,3 +136,13 @@ function aws-cmd-everywhere() {
     eval $CMD
   done <<< "$PROFILES"
 }
+
+function aws-assume-role () {
+    local ROLE_ARN=$1
+    local session=$(aws sts assume-role --role-arn "${ROLE_ARN}" --role-session-name AWSCLI-Session | jq ".Credentials")
+    export AWS_ACCESS_KEY_ID=$(echo ${session} | jq -r '.AccessKeyId')
+    export AWS_SECRET_ACCESS_KEY=$(echo ${session} | jq -r '.SecretAccessKey')
+    export AWS_SESSION_TOKEN=$(echo ${session} | jq -r '.SessionToken')
+    local exp=$(echo ${session} | jq ".Expiration")
+    echo "Access set until: ${exp}"
+}
