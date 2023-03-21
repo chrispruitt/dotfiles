@@ -18,8 +18,8 @@ chmod +x $HOME/.local/bin/hishtory
 (
   cd /tmp/
   curl -sfLo - https://github.com/ddworken/hishtory/archive/refs/tags/v${VERSION}.tar.gz | tar -xzf - hishtory-${VERSION}/client/lib/config.zsh
-  mv hishtory-${VERSION}/client/lib/config.zsh ~/.hishtory/
-
+  mkdir -p $HOME/.hishtory
+  mv hishtory-${VERSION}/client/lib/config.zsh $HOME/.hishtory/
 )
 
 # TODO: init hishtory by setting your server and use your existing hishtory secret
