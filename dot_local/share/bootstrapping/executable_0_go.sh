@@ -17,3 +17,4 @@ go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.46.1
 go install github.com/abice/go-enum@latest
 go install golang.org/x/tools/gopls@latest
 go install github.com/m3ng9i/ran@latest
+go install github.com/aquasecurity/tfsec/cmd/tfsec@latest
