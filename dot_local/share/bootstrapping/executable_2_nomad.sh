@@ -5,5 +5,5 @@ exit_if_installed nomad
 
 set -e
 
-curl -sfLo - https://releases.hashicorp.com/nomad/1.4.3/nomad_1.4.3_linux_amd64.zip | busybox unzip -qd ~/.local/bin -
+curl -sfLo - https://releases.hashicorp.com/nomad/1.5.2/nomad_1.5.2_linux_amd64.zip | busybox unzip -qd ~/.local/bin -
 chmod +x ~/.local/bin/nomad
