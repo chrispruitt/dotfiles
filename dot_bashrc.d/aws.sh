@@ -146,3 +146,14 @@ function aws-assume-role () {
     local exp=$(echo ${session} | jq ".Expiration")
     echo "Access set until: ${exp}"
 }
+
+function aws-search-tags () {
+	if [ -z "$1" ]; then
+	  # display usage if no params are given
+		echo "Usage: aws-search-tags Environment qa"
+		echo "Returns all resources in JSON format that match the tag <key> and <value> provided."
+		return 1
+	else
+	  aws resourcegroupstaggingapi get-resources --tag-filters Key=$1,Values=$2 
+	fi
+}
