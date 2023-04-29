@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+git fetch origin
+git checkout $@
+git merge origin/$@ --ff-only
+
+# If master doesn't exist, assume main does
+git rebase origin/master 2> /dev/null || git rebase origin/main
+
+git push -f origin $@:$@
