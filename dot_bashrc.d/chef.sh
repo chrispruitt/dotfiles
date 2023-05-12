@@ -83,3 +83,12 @@ complete -F _setChefHost setChefHost
 function listapps() {
   knife search node "roles:*$1* AND chef_environment:*$2*"
 }
+
+## Chef via docker
+alias chefcon='docker run -it --rm --hostname amadd0x/chefcon \
+-v ${PWD}:/root/workspace \
+-v ~/:/root \
+-e KNIFE_NODE_NAME=amaddox \
+-e KNIFE_CLIENT_KEY="~/.chef/cpruitt.pem" \
+-e KNIFE_CHEF_SERVER_URL="https://chef.edocard.net/organizations/edo" \
+amadd0x/chefcon'
