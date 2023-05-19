@@ -1,4 +1,5 @@
-export AWS_ORG_PREFIX=config-
+export AWS_ORG_CONFIG_FILE_PREFIX=config-
+export AWS_ORG_CREDENTIALS_FILE_PREFIX=credentials-
 
 awsorg() {
   local org=$1
@@ -12,8 +13,8 @@ awsorg() {
 
   else
     export AWS_ORG=$org
-    export AWS_CONFIG_FILE=~/.aws/config-$org
-    export AWS_SHARED_CREDENTIALS_FILE=~/.aws/credentials-$org
+    export AWS_CONFIG_FILE=~/.aws/${AWS_ORG_CONFIG_FILE_PREFIX}$org
+    export AWS_SHARED_CREDENTIALS_FILE=~/.aws/${AWS_ORG_CREDENTIALS_FILE_PREFIX}$org
     export AWS_DEFAULT_SSO_START_URL=https://$org.awsapps.com/start
     export AWS_DEFAULT_SSO_REGION=us-east-1
   fi
@@ -23,8 +24,8 @@ _awsorg() {
   local cur
   COMPREPLY=()
   cur=${COMP_WORDS[COMP_CWORD]}
-  WORDS="$(ls ~/.aws/ | grep ${AWS_ORG_PREFIX})"
-  WORDS=${WORDS//${AWS_ORG_PREFIX}/}
+  WORDS="$(ls ~/.aws/ | grep ${AWS_ORG_CONFIG_FILE_PREFIX})"
+  WORDS=${WORDS//${AWS_ORG_CONFIG_FILE_PREFIX}/}
   case "$cur" in
   *)
     COMPREPLY=($(compgen -W "$WORDS" -- "$cur"))
@@ -36,11 +37,13 @@ complete -F _awsorg awsorg
 
 awsorg-add() {
   mkdir -p ~/.aws
-  touch ~/.aws/${AWS_ORG_PREFIX}${1}
+  touch ~/.aws/${AWS_ORG_CONFIG_FILE_PREFIX}${1}
+  touch ~/.aws/${AWS_ORG_CREDENTIALS_FILE_PREFIX}${1}
 }
 
 awsorg-rm() {
-  rm ~/.aws/${AWS_ORG_PREFIX}${1}
+  rm ~/.aws/${AWS_ORG_CONFIG_FILE_PREFIX}${1}
+  rm ~/.aws/${AWS_ORG_CREDENTIALS_FILE_PREFIX}${1}
 }
 
 awsorg-populate-profiles() {
