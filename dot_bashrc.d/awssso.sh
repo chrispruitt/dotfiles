@@ -43,6 +43,11 @@ awssso-logout() {
   unset AWS_ACCOUNT
 }
 
+awssso-refresh() {
+  aws sso logout --profile ${AWS_PROFILE}
+  awssso ${AWS_PROFILE}
+}
+
 awssso-get-credentials() {
   SSO_ROLE_NAME=$(aws configure get sso_role_name)
   SSO_ACCOUNT_ID=$(aws configure get sso_account_id)

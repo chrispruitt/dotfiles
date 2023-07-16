@@ -12,8 +12,8 @@ do
     n=$(($n + 1))
 done
 
-if (($n > 0)); then
-    mkdir /tmp/log
+if [ "$n" -gt "0" ]; then
+    mkdir -p /tmp/log
     task sync >> /tmp/log/sync_hook.log
 fi
 

@@ -61,5 +61,6 @@
     "tabnine.experimentalAutoImports": true,
     "window.newWindowDimensions": "inherit",
     "plantuml.server": "https://www.plantuml.com/plantuml",
-    "files.autoSave": "onFocusChange"
+    "files.autoSave": "onFocusChange",
+    "window.zoomLevel": 1
 }
