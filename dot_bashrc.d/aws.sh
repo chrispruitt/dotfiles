@@ -157,3 +157,19 @@ function aws-search-tags () {
 	  aws resourcegroupstaggingapi get-resources --tag-filters Key=$1,Values=$2 
 	fi
 }
+
+# send a text message with process is done
+function notify () {
+        [ -z "$PHONE_NUMBER" ] && echo "PHONE_NUMBER is required"
+        echo "Waiting for pid $1 to exit"
+        while :
+        do
+                if ! ps $1 > /dev/null
+                then
+                        echo "Stopped"
+                        aws sns publish --phone-number "+$PHONE_NUMBER" --message "PID $1 has finished running\!"
+                        break
+                fi
+                sleep 1
+        done
+}

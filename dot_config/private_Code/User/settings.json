@@ -23,7 +23,7 @@
     "telemetry.telemetryLevel": "off",
     "customLocalFormatters.formatters": [
         {
-            "command": "~/bin/terraform fmt -",
+            "command": "~/.local/bin/nomad fmt -",
             "languages": [
                 "terraform"
             ]
@@ -62,5 +62,20 @@
     "window.newWindowDimensions": "inherit",
     "plantuml.server": "https://www.plantuml.com/plantuml",
     "files.autoSave": "onFocusChange",
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "yaml.schemas": {
+        "file:///home/cpruitt/.vscode/extensions/atlassian.atlascode-3.0.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "atlascode.bitbucket.enabled": true,
+    "atlascode.jira.jqlList": [
+        {
+            "id": "151f4874-e912-47ab-927a-b88e1fc7e616",
+            "enabled": true,
+            "name": "My gofigg Issues",
+            "query": "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
+            "siteId": "4bb0a47c-6e2a-4999-8c63-6e3e4e45047b",
+            "monitor": true
+        }
+    ],
+    "security.workspace.trust.untrustedFiles": "newWindow"
 }
