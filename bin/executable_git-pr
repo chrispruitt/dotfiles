@@ -1,0 +1,33 @@
+#!/bin/bash
+#
+# Create a branch, add all changes, commit, and create pr
+#
+# $1 - Branch name.
+# $2 - Commit message.
+#
+# Examples
+#
+#   git pr <branch-name>
+
+set -e
+
+echo Branch Name:
+read branch_name
+
+# create new branch
+git checkout -b $branch_name
+
+# stage all changes
+git add -A
+
+echo Commit Message:
+read commit_message
+
+# add all files and commit
+git commit -m "$commit_message"
+
+# push branch
+git promote
+
+# open pr request in browser
+gh pr create -w

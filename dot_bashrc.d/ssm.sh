@@ -7,7 +7,7 @@
 #   ssm <instance name>
 #   ssm <instance id>
 
-_ssm() {
+_ssm-session() {
 
   [ -z "$AWS_PROFILE" ] && echo "AWS_PROFILE not set!" && return
 
@@ -31,7 +31,7 @@ _ssm() {
   esac
 }
 
-function ssm() {
+function ssm-session() {
   CACHE="/tmp/instances_${AWS_PROFILE}.json"
 
   TARGET="$@"
@@ -52,7 +52,7 @@ function ssm() {
   aws ssm start-session --target $INSTANCE_ID
 }
 
-complete -F _ssm ssm
+complete -F _ssm-session ssm-session
 
 ###############################################
 ###############################################

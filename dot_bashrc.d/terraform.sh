@@ -1,3 +1,5 @@
+alias tf-cleanup="find . -type d -name .terraform -exec rm -rf {} \;"
+
 
 function terraboard() {
   # newAwsSession
@@ -35,3 +37,4 @@ function copyTerraformWorkspace() {
   rsync -a workspaces/$2/$1/* workspaces/$3/$1
   echo "workspaces/$3/$1"
 }
+

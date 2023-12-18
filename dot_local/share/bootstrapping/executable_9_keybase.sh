@@ -3,9 +3,7 @@
 source "$(dirname $0)/_utility.sh"
 
 # limit this to desktop environments
-if [ ! "$XDG_CURRENT_DESKTOP" = "KDE" ]; then
-  exit 0
-fi
+exit_if_not_desktop
 
 exit_if_installed run_keybase
 
@@ -13,6 +11,11 @@ set -e
 
 if [ "$OS" = "manjaro" ]; then
   yes | yay -S keybase-bin
+  run_keybase
+fi
+
+if [ "$OS" = "fedora" ]; then
+  sudo yum -y install https://prerelease.keybase.io/keybase_amd64.rpm
   run_keybase
 fi
 

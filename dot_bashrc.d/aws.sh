@@ -119,3 +119,57 @@ function aws-paginated() {
   cat $OUTPUT | jq -s '{PaginatedResults: .}'
   rm -rf $OUTPUT
 }
+
+function aws-cmd-everywhere() {
+  # aws-cmd-everywhere
+  #   usage: aws-cmd-everywhere <any aws cli command>
+  
+  if [[ -z "$AWS_CONFIG_FILE" ]]; then
+    local AWS_CONFIG_FILE=~/.aws/config
+  fi
+
+  PROFILES="$(cat ${AWS_CONFIG_FILE} | grep "^\[profile " | sed 's/\[profile //;s/\]//' | grep Administrator)"
+
+  while IFS= read -r CMD_PROFILE; do
+  CMD="$@ --profile $CMD_PROFILE"
+    echo "\n executing '$CMD'\n"
+    eval $CMD
+  done <<< "$PROFILES"
+}
+
+function aws-assume-role () {
+    local ROLE_ARN=$1
+    local session=$(aws sts assume-role --role-arn "${ROLE_ARN}" --role-session-name AWSCLI-Session | jq ".Credentials")
+    export AWS_ACCESS_KEY_ID=$(echo ${session} | jq -r '.AccessKeyId')
+    export AWS_SECRET_ACCESS_KEY=$(echo ${session} | jq -r '.SecretAccessKey')
+    export AWS_SESSION_TOKEN=$(echo ${session} | jq -r '.SessionToken')
+    local exp=$(echo ${session} | jq ".Expiration")
+    echo "Access set until: ${exp}"
+}
+
+function aws-search-tags () {
+	if [ -z "$1" ]; then
+	  # display usage if no params are given
+		echo "Usage: aws-search-tags Environment qa"
+		echo "Returns all resources in JSON format that match the tag <key> and <value> provided."
+		return 1
+	else
+	  aws resourcegroupstaggingapi get-resources --tag-filters Key=$1,Values=$2 
+	fi
+}
+
+# send a text message with process is done
+function notify () {
+        [ -z "$PHONE_NUMBER" ] && echo "PHONE_NUMBER is required"
+        echo "Waiting for pid $1 to exit"
+        while :
+        do
+                if ! ps $1 > /dev/null
+                then
+                        echo "Stopped"
+                        aws sns publish --phone-number "+$PHONE_NUMBER" --message "PID $1 has finished running\!"
+                        break
+                fi
+                sleep 1
+        done
+}

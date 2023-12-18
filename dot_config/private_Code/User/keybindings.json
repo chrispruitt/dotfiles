@@ -1,0 +1,42 @@
+[
+  {
+      "key": "ctrl+d",
+      "command": "editor.action.duplicateSelection"
+  },
+  {
+      "key": "ctrl+d",
+      "command": "-editor.action.addSelectionToNextFindMatch",
+      "when": "editorFocus"
+  },
+  {
+      "key": "ctrl+r",
+      "command": "rerunSearchEditorSearch",
+      "when": "inSearchEditor"
+  },
+  {
+      "key": "shift+ctrl+r",
+      "command": "workbench.action.replaceInFiles"
+  },
+  {
+      "key": "shift+ctrl+h",
+      "command": "-workbench.action.replaceInFiles"
+  },
+  {
+      "key": "ctrl+u",
+      "command": "editor.action.transformToUppercase"
+  },
+  {
+      "key": "ctrl+shift+u",
+      "command": "editor.action.transformToLowercase"
+  },
+  {
+      "key": "ctrl+r",
+      "command": "editor.action.startFindReplaceAction",
+      "when": "editorFocus || editorIsOpen"
+  },
+  {
+      "key": "alt+ctrl+f",
+      "command": "-editor.action.startFindReplaceAction",
+      "when": "editorFocus || editorIsOpen"
+  }
+]

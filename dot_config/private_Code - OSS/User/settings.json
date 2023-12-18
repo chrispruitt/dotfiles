@@ -4,6 +4,8 @@
     "workbench.startupEditor": "newUntitledFile",
     "editor.renderWhitespace": "all",
     "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
     "editor.fontSize": 12,
     "editor.tabSize": 2,
     "extensions.ignoreRecommendations": true,
@@ -34,8 +36,12 @@
     "[terraform]": {
         "editor.defaultFormatter": "jkillian.custom-local-formatters"
     },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
     "go.toolsManagement.autoUpdate": true,
     "go.coverOnSave": true,
+    "go.formatTool": "goimports",
     "go.coverageDecorator": {
         "type": "gutter",
         "coveredHighlightColor": "rgba(64,128,128,0.5)",
@@ -45,5 +51,7 @@
     },
     "go.coverOnSingleTest": true,
     "terminal.integrated.defaultProfile.linux": "zsh",
-    "tabnine.experimentalAutoImports": true
+    "tabnine.experimentalAutoImports": true,
+    "window.newWindowDimensions": "inherit",
+    "plantuml.server": "https://www.plantuml.com/plantuml"
 }

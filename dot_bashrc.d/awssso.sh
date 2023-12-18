@@ -43,6 +43,11 @@ awssso-logout() {
   unset AWS_ACCOUNT
 }
 
+awssso-refresh() {
+  aws sso logout --profile ${AWS_PROFILE}
+  awssso ${AWS_PROFILE}
+}
+
 awssso-get-credentials() {
   SSO_ROLE_NAME=$(aws configure get sso_role_name)
   SSO_ACCOUNT_ID=$(aws configure get sso_account_id)
@@ -66,4 +71,14 @@ awssso-get-token() {
 
 awssso-populate-org-profiles() {
   echo "You're looking for the awsorg* commands, dumbass."
+}
+
+awssso-export() {
+  eval $(awssso-get-credentials)
+}
+
+awssso-unset() {
+  unset AWS_ACCESS_KEY_ID
+  unset AWS_SECRET_ACCESS_KEY
+  unset AWS_SESSION_TOKEN
 }

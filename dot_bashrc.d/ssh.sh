@@ -2,7 +2,7 @@
 
 function sshinit {
   SSH_SERVER=$1
-  SSH_PUBLICKEY_PATH=$2
+  SSH_PUBLICKEY_PATH=${2:=$HOME/.ssh/id_rsa.pub}
   SSH_PUBLICKEY=`basename $SSH_PUBLICKEY_PATH`
   KEY=$(cat $SSH_PUBLICKEY_PATH)
   echo "Adding $SSH_PUBLICKEY to authorized_keys"

@@ -1,0 +1,81 @@
+{
+    "workbench.colorTheme": "One Dark Pro",
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.renderWhitespace": "all",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
+    "editor.fontSize": 12,
+    "editor.tabSize": 2,
+    "extensions.ignoreRecommendations": true,
+    "extensions.autoCheckUpdates": false,
+    "explorer.confirmDelete": false,
+    "extensions.autoUpdate": false,
+    "files.watcherExclude": {
+        "**/vendor/**": true,
+        "**/.config/**": true
+    },
+    "gitlens.mode.statusBar.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "explorer.confirmDragAndDrop": false,
+    "redhat.telemetry.enabled": false,
+    "telemetry.telemetryLevel": "off",
+    "customLocalFormatters.formatters": [
+        {
+            "command": "~/.local/bin/nomad fmt -",
+            "languages": [
+                "terraform"
+            ]
+        },
+        {
+            "command": "~/.local/bin/nomad fmt -",
+            "languages": [
+                "nomad"
+            ]
+        }
+    ],
+    "files.associations": {
+        "*.hcl": "terraform",
+        "*.nomad": "terraform",
+        "*.tf": "terraform"
+    },
+    "[terraform]": {
+        "editor.defaultFormatter": "jkillian.custom-local-formatters"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "go.toolsManagement.autoUpdate": true,
+    "go.coverOnSave": true,
+    "go.formatTool": "goimports",
+    "go.coverageDecorator": {
+        "type": "gutter",
+        "coveredHighlightColor": "rgba(64,128,128,0.5)",
+        "uncoveredHighlightColor": "rgba(128,64,64,0.25)",
+        "coveredGutterStyle": "blockgreen",
+        "uncoveredGutterStyle": "blockred"
+    },
+    "go.coverOnSingleTest": true,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "tabnine.experimentalAutoImports": true,
+    "window.newWindowDimensions": "inherit",
+    "plantuml.server": "https://www.plantuml.com/plantuml",
+    "files.autoSave": "onFocusChange",
+    "window.zoomLevel": 1,
+    "yaml.schemas": {
+        "file:///home/cpruitt/.vscode/extensions/atlassian.atlascode-3.0.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "atlascode.bitbucket.enabled": true,
+    "atlascode.jira.jqlList": [
+        {
+            "id": "151f4874-e912-47ab-927a-b88e1fc7e616",
+            "enabled": true,
+            "name": "My gofigg Issues",
+            "query": "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
+            "siteId": "4bb0a47c-6e2a-4999-8c63-6e3e4e45047b",
+            "monitor": true
+        }
+    ],
+    "security.workspace.trust.untrustedFiles": "newWindow"
+}
