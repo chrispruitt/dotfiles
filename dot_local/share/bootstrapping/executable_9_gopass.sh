@@ -10,7 +10,7 @@ exit_if_installed gopass
 set -e
 
 if [ "$OS" = "manjaro" ]; then
-  yes | sudo pacman -S gopass gopass-jsonapi
+  sudo pacman -S gopass gopass-jsonapi
 fi
 
 if [ "$OS" = "linuxmint" ]; then

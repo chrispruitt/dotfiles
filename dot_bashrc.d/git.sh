@@ -45,3 +45,13 @@ function git_unfuck_author() {
   done
 
 }
+
+function git-log-search() {
+  if [ -z "$1" ]; then
+    echo "Usage: git-log-search 'your-search-string'"
+    echo "-- Be sure to surround in single-quotes --"
+    echo "Searches the full history of git, revealing code within commits that matches your string"
+    return 1
+  fi
+  git log -S"$1" -p
+}

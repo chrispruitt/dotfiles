@@ -5,7 +5,7 @@ exit_if_installed go
 
 set -e
 
-curl -sLo - https://go.dev/dl/go1.20.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
+curl -sLo - https://go.dev/dl/go1.21.6.linux-amd64.tar.gz | sudo tar -xzf - -C /usr/local
 echo 'export PATH=$PATH:/usr/local/go/bin:/root/go/bin:$HOME/go/bin' | sudo tee /etc/profile.d/go.sh
 
 source /etc/profile.d/go.sh

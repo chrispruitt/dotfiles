@@ -23,7 +23,7 @@
     "telemetry.telemetryLevel": "off",
     "customLocalFormatters.formatters": [
         {
-            "command": "~/.local/bin/nomad fmt -",
+            "command": "~/bin/terraform fmt -",
             "languages": [
                 "terraform"
             ]
@@ -41,6 +41,9 @@
         "*.tf": "terraform"
     },
     "[terraform]": {
+        "editor.defaultFormatter": "jkillian.custom-local-formatters"
+    },
+    "[nomad]": {
         "editor.defaultFormatter": "jkillian.custom-local-formatters"
     },
     "[javascript]": {
@@ -62,7 +65,6 @@
     "window.newWindowDimensions": "inherit",
     "plantuml.server": "https://www.plantuml.com/plantuml",
     "files.autoSave": "onFocusChange",
-    "window.zoomLevel": 1,
     "yaml.schemas": {
         "file:///home/cpruitt/.vscode/extensions/atlassian.atlascode-3.0.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },

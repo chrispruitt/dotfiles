@@ -23,10 +23,10 @@ chmod +x $HOME/.local/bin/hishtory
 )
 
 # TODO: init hishtory by setting your server and use your existing hishtory secret
-# HISHTORY_SERVER=https://hishtory.cpru.io hishtory init $(gopass -o cpru/hishtory_secret)
+# HISHTORY_SERVER=https://hishtory.cpru.net hishtory init $(gopass -o cpru/hishtory_secret)
 
 # add the following to your zshrc
-# export HISHTORY_SERVER=https://hishtory.cpru.io
+# eexport HISHTORY_SERVER=https://hishtory.cpru.net
 # source /home/cpruitt/.hishtory/config.zsh
 
 
