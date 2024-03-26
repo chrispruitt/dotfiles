@@ -123,17 +123,22 @@ function aws-paginated() {
 function aws-cmd-everywhere() {
   # aws-cmd-everywhere
   #   usage: aws-cmd-everywhere <any aws cli command>
+
+  PROFILE_PATTERN=$2
   
   if [[ -z "$AWS_CONFIG_FILE" ]]; then
     local AWS_CONFIG_FILE=~/.aws/config
   fi
 
-  PROFILES="$(cat ${AWS_CONFIG_FILE} | grep "^\[profile " | sed 's/\[profile //;s/\]//' | grep Administrator)"
+  PROFILES="$(cat ${AWS_CONFIG_FILE} | grep "^\[profile " | sed 's/\[profile //;s/\]//' | grep Deploy)"
 
   while IFS= read -r CMD_PROFILE; do
-  CMD="$@ --profile $CMD_PROFILE"
-    echo "\n executing '$CMD'\n"
-    eval $CMD
+    (
+      awssso $CMD_PROFILE
+      CMD="$@"
+      echo "\n executing '$CMD'\n" as $CMD_PROFILE
+      eval $CMD
+    )
   done <<< "$PROFILES"
 }
 

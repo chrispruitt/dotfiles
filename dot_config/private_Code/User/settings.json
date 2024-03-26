@@ -66,7 +66,7 @@
     "plantuml.server": "https://www.plantuml.com/plantuml",
     "files.autoSave": "onFocusChange",
     "yaml.schemas": {
-        "file:///home/cpruitt/.vscode/extensions/atlassian.atlascode-3.0.4/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+        "file:///home/cpruitt/.vscode/extensions/atlassian.atlascode-3.0.10/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
     },
     "atlascode.bitbucket.enabled": true,
     "atlascode.jira.jqlList": [
