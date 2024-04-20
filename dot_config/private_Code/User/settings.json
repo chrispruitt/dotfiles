@@ -31,21 +31,24 @@
         {
             "command": "~/.local/bin/nomad fmt -",
             "languages": [
-                "nomad"
+                "hcl"
             ]
         }
     ],
     "files.associations": {
-        "*.hcl": "terraform",
-        "*.nomad": "terraform",
+        "*.hcl": "hcl",
+        "*.nomad": "hcl",
         "*.tf": "terraform"
     },
     "[terraform]": {
-        "editor.defaultFormatter": "jkillian.custom-local-formatters"
+        "editor.defaultFormatter": "hashicorp.terraform"
     },
-    "[nomad]": {
-        "editor.defaultFormatter": "jkillian.custom-local-formatters"
-    },
+    // "[nomad]": {
+    //     "editor.defaultFormatter": "jkillian.custom-local-formatters"
+    // },
+    // "[hcl]": {
+    //     "editor.defaultFormatter": "jkillian.custom-local-formatters"
+    // },
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
@@ -79,5 +82,8 @@
             "monitor": true
         }
     ],
-    "security.workspace.trust.untrustedFiles": "newWindow"
+    "security.workspace.trust.untrustedFiles": "newWindow",
+    "remote.SSH.remotePlatform": {
+        "coder-vscode--cpruitt--cpru": "linux"
+    }
 }
