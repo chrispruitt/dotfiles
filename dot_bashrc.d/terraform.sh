@@ -38,3 +38,7 @@ function copyTerraformWorkspace() {
   echo "workspaces/$3/$1"
 }
 
+function tf-module-references() {
+  # Show all terraform modules currently in use within a terraform repo
+  grep -r -o -P 'source.*"../../../modules.*' . --include='*.tf' --exclude-dir='.terraform' | sed -E 's/\".*.\// .\//g; s/:source.*.\// /g; s/\"//g' | awk '{print $2 "\t" $1}' | column -t | sort
+}
