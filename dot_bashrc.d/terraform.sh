@@ -22,7 +22,6 @@ function terraboard() {
     -e DB_NAME="gorm" \
     --link terraboarddb:db \
     camptocamp/terraboard:latest
-
 }
 
 function terraformVersion() {
